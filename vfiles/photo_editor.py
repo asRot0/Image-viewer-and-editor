@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from CTkMessagebox import CTkMessagebox
-from image_widgets import ImageImport, ImageOutput, CloseOutput
+from image_widgets import FirstFrame, ImageImport, ImageOutput, CloseOutput
 from menu import Menu
 from PIL import Image, ImageTk, ImageOps, ImageEnhance, ImageFilter
 import settings
@@ -29,14 +29,13 @@ class App(ctk.CTk):
         self.canvas_width = 0
         self.canvas_height = 0
 
-        self.first_frame = ctk.CTkFrame(self)
-        self.first_frame.pack(expand=True, fill='both')
+        self.first_frame = FirstFrame(self)
 
 
-        # layout
-        self.first_frame.rowconfigure(0, weight=1, uniform='a')
-        self.first_frame.columnconfigure(0, weight=2, uniform='a')
-        self.first_frame.columnconfigure(1, weight=6, uniform='a')
+        # # layout
+        # self.first_frame.rowconfigure(0, weight=1, uniform='a')
+        # self.first_frame.columnconfigure(0, weight=2, uniform='a')
+        # self.first_frame.columnconfigure(1, weight=6, uniform='a')
 
         # widgets
         self.image_import = ImageImport(self.first_frame, self.import_image)
