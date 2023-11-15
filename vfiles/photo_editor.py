@@ -4,6 +4,7 @@ from image_widgets import FirstFrame, ImageImport, ImageOutput, CloseOutput
 from menu import Menu
 from PIL import Image, ImageTk, ImageOps, ImageEnhance, ImageFilter
 import settings
+from frame import Frame
 
 
 class App(ctk.CTk):
@@ -28,20 +29,34 @@ class App(ctk.CTk):
         self.image_height = 0
         self.canvas_width = 0
         self.canvas_height = 0
+        self.image_path = []
 
-        self.first_frame = FirstFrame(self)
+        # main frames
+        self.frame = Frame(self, self.frame_close, self.path)
 
+        # self.first_frame = FirstFrame(self)
 
-        # # layout
-        # self.first_frame.rowconfigure(0, weight=1, uniform='a')
-        # self.first_frame.columnconfigure(0, weight=2, uniform='a')
-        # self.first_frame.columnconfigure(1, weight=6, uniform='a')
 
         # widgets
-        self.image_import = ImageImport(self.first_frame, self.import_image)
+        # self.image_import = ImageImport(self.first_frame, self.import_image)
 
         # run
         self.mainloop()
+
+    def frame_close(self, flag):
+        if flag:
+            self.frame.pack_forget()
+            print('close')
+            self.first_frame = FirstFrame(self)
+            # self.image_import = ImageImport(self.first_frame, self.import_image)
+            self.import_image(self.image_path[0])
+
+    def path(self, img_path):
+        print(img_path)
+        self.image_path[:] = img_path
+        img_path.clear()
+        print(self.image_path)
+        print(img_path)
 
     def init_parameters(self):
         self.pos_vars = {
@@ -125,7 +140,7 @@ class App(ctk.CTk):
         self.image_ratio = self.image.size[0] / self.image.size[1]
         self.image_tk = ImageTk.PhotoImage(self.image)
 
-        self.image_import.grid_remove()
+        # self.image_import.grid_remove()
         self.image_output = ImageOutput(self.first_frame, self.resize_image)
         self.close_button = CloseOutput(self.first_frame, self.close_edit)
         self.menu = Menu(self.first_frame, self.pos_vars, self.color_vars, self.effect_vars, self.export_image)
