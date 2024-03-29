@@ -5,11 +5,15 @@ import os
 
 
 class Frame(ctk.CTkFrame):
-    def __init__(self, parent, flag_fun, path):
+    def __init__(self, parent, flag_fun, path, left_image, right_image):
         super().__init__(master=parent, fg_color='red')
         self.pack(expand=True, fill='both')
         self.flag_fun = flag_fun
         self.path = path
+        self.left_image = left_image
+        self.right_image = right_image
+        self.image_index = 0
+        self.image_pathlen = 0
 
         # image navigation
         header_frame = ctk.CTkFrame(self, fg_color='lightgrey')
@@ -18,11 +22,11 @@ class Frame(ctk.CTkFrame):
         inner_frame = ctk.CTkFrame(header_frame, fg_color='lightgrey')
         inner_frame.pack(expand=True)
 
-        left_button = ctk.CTkButton(inner_frame, text='Edit')
+        left_button = ctk.CTkButton(inner_frame, text='left', command=self.left_img)
         left_button.pack(pady=5, side='left')
         img_num_text = ctk.CTkLabel(inner_frame, text='Button 2', fg_color='black')
         img_num_text.pack(pady=5, side='left')
-        right_button = ctk.CTkButton(inner_frame, text='Button 3')
+        right_button = ctk.CTkButton(inner_frame, text='right', command=self.right_img)
         right_button.pack(pady=5, side='left')
 
         # Vertical Frame on the Left
@@ -56,9 +60,6 @@ class Frame(ctk.CTkFrame):
                            file.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.jfif', '.bmp', '.tiff', '.ico'))]
 
             if image_files:
-                # Sort the image files alphabetically
-                image_files.sort()
-
                 # Load and store the images
                 self.images = []
 
@@ -67,6 +68,18 @@ class Frame(ctk.CTkFrame):
                     file_path = os.path.join(directory, file)
                     self.images.append(file_path)
         self.path(self.images)
+        self.image_pathlen = len(self.images)
 
     def edit_flag(self):
         self.flag_fun(True)
+        print(self.images)
+
+    def left_img(self):
+        print('left image')
+        self.image_index -= 1
+        self.left_image(self.image_index)
+
+    def right_img(self):
+        print('right image')
+        self.image_index += 1
+        self.right_image(self.image_index)
