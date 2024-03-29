@@ -2,6 +2,7 @@ import customtkinter as ctk
 from tkinter import filedialog
 import settings
 import os
+from PIL import Image, ImageTk
 
 
 class Frame(ctk.CTkFrame):
@@ -13,7 +14,6 @@ class Frame(ctk.CTkFrame):
         self.left_image = left_image
         self.right_image = right_image
         self.image_index = 0
-        self.image_pathlen = 0
 
         # image navigation
         header_frame = ctk.CTkFrame(self, fg_color='lightgrey')
@@ -33,7 +33,7 @@ class Frame(ctk.CTkFrame):
         left_vertical_frame = ctk.CTkFrame(self, fg_color='lightgrey', width=50)
         left_vertical_frame.grid(row=1, column=0, sticky='ns', pady=10)
 
-        inner_frame = ctk.CTkFrame(left_vertical_frame, fg_color='lightgrey')
+        inner_frame = ctk.CTkFrame(left_vertical_frame, fg_color='yellow')
         inner_frame.pack(expand=True)
 
         button1 = ctk.CTkButton(inner_frame, text='open', width=10, command=self.open_image)
@@ -44,8 +44,11 @@ class Frame(ctk.CTkFrame):
         button3.pack(padx=2, pady=10)
 
         # Canvas for Image Viewer
-        canvas = ctk.CTkCanvas(self, bg='white')
-        canvas.grid(row=1, column=1, columnspan=2, sticky='nsew', padx=1, pady=2)
+        self.canvas = ctk.CTkCanvas(self, bg='white', relief='ridge',
+                         bd=0, highlightthickness=0)
+        self.canvas.grid(row=1, column=1, columnspan=2, sticky='nsew', padx=1, pady=2)
+        # self.canvas.bind('<Configure>', self.resize_image)
+        self.canvas.bind('<Configure>', self.resize_image)
 
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(1, weight=1)
@@ -68,7 +71,7 @@ class Frame(ctk.CTkFrame):
                     file_path = os.path.join(directory, file)
                     self.images.append(file_path)
         self.path(self.images)
-        self.image_pathlen = len(self.images)
+        self.image_show()
 
     def edit_flag(self):
         self.flag_fun(True)
@@ -78,8 +81,47 @@ class Frame(ctk.CTkFrame):
         print('left image')
         self.image_index -= 1
         self.left_image(self.image_index)
+        self.image_show()
 
     def right_img(self):
         print('right image')
         self.image_index += 1
         self.right_image(self.image_index)
+        self.image_show()
+
+
+    def image_show(self):
+        print('image show')
+        self.image = Image.open(self.images[self.image_index])
+        self.image_ratio = self.image.size[0] / self.image.size[1]
+        # self.imagetk = ImageTk.PhotoImage(self.image)
+
+        # resize
+        if self.canvas_ratio > self.image_ratio:
+            self.image_height = int(self.event_height)
+            self.image_width = int(self.image_height * self.image_ratio)
+        else:
+            self.image_width = int(self.event_width)
+            self.image_height = int(self.image_width / self.image_ratio)
+
+        self.place_image()
+
+    def resize_image(self, event):
+        print(event)
+        self.canvas_ratio = event.width / event.height
+
+        # update canvas attributes
+        self.canvas_width = event.width
+        self.canvas_height = event.height
+        self.event_width = event.width
+        self.event_height = event.height
+
+        if self.images:
+            self.image_show()
+
+
+    def place_image(self):
+        # place image
+        resized_image = self.image.resize((self.image_width, self.image_height))
+        self.image_tk = ImageTk.PhotoImage(resized_image)
+        self.canvas.create_image(self.canvas_width / 2, self.canvas_height / 2, image=self.image_tk)

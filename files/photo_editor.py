@@ -55,7 +55,7 @@ class App(ctk.CTk):
     def path(self, img_path):
         print(img_path)
         self.image_path[:] = img_path
-        img_path.clear()
+        #img_path.clear()
         print(self.image_path)
         print(img_path)
 
