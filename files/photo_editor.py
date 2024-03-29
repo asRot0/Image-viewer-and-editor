@@ -185,7 +185,7 @@ class App(ctk.CTk):
         self.menu.grid_forget()
         # self.image_import.grid()
         self.first_frame.pack_forget()
-        self.frame = Frame(self, self.frame_close, self.path)
+        self.frame = Frame(self, self.frame_close, self.path, self.left_image, self.right_image)
 
     def export_image(self, name, file, path):
         export_string = f'{path}/{name}.{file}'
