@@ -14,6 +14,7 @@ class Frame(ctk.CTkFrame):
         self.left_image = left_image
         self.right_image = right_image
         self.image_index = 0
+        self.image_ind = 0
         self.total_images = 0
 
         # image navigation
@@ -73,28 +74,42 @@ class Frame(ctk.CTkFrame):
                     self.images.append(file_path)
         self.path(self.images)
         self.total_images = len(self.images)
-        self.image_number()
+        self.image_number(0)
         self.image_show()
 
     def edit_flag(self):
         self.flag_fun(True)
         print(self.images)
 
-    def image_number(self):
-        self.img_num_text.configure(text=f' {str(self.image_index + 1)} / {str(self.total_images)} ')
+    def image_number(self, check):
+        if check > 0 and self.image_index < self.total_images-1:
+            if self.image_index > 0:
+                self.image_index += 1
+            else:
+                self.image_index = self.image_ind + 1
+            self.image_ind = self.image_index
+        elif check < 0:
+            if self.image_index > 0:
+                self.image_index -= 1
+                self.image_ind = self.image_index
+            else:
+                self.image_index -= 1
+                self.image_ind = self.total_images + self.image_index
+        else:
+            self.image_index = 0
+            self.image_ind = 0
+        self.img_num_text.configure(text=f' {str(self.image_ind + 1)} / {str(self.total_images)} ')
 
     def left_img(self):
         print('left image')
-        self.image_index -= 1
+        self.image_number(-1)
         self.left_image(self.image_index)
-        self.image_number()
         self.image_show()
 
     def right_img(self):
         print('right image')
-        self.image_index += 1
+        self.image_number(1)
         self.right_image(self.image_index)
-        self.image_number()
         self.image_show()
 
     def image_show(self):
