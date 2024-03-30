@@ -7,31 +7,32 @@ from PIL import Image, ImageTk
 
 class Frame(ctk.CTkFrame):
     def __init__(self, parent, flag_fun, path, left_image, right_image):
-        super().__init__(master=parent, fg_color='red')
+        super().__init__(master=parent, fg_color=settings.BACKGROUND_COLOR)
         self.pack(expand=True, fill='both')
         self.flag_fun = flag_fun
         self.path = path
         self.left_image = left_image
         self.right_image = right_image
         self.image_index = 0
+        self.total_images = 0
 
         # image navigation
-        header_frame = ctk.CTkFrame(self, fg_color='lightgrey')
-        header_frame.grid(row=0, column=0, columnspan=3, sticky='ew')
+        header_frame = ctk.CTkFrame(self, fg_color=settings.BACKGROUND_COLOR)
+        header_frame.grid(row=0, column=1, columnspan=3, sticky='ew')
 
         inner_frame = ctk.CTkFrame(header_frame, fg_color='lightgrey')
         inner_frame.pack(expand=True)
 
         left_button = ctk.CTkButton(inner_frame, text='left', command=self.left_img)
         left_button.pack(pady=5, side='left')
-        img_num_text = ctk.CTkLabel(inner_frame, text='Button 2', fg_color='black')
-        img_num_text.pack(pady=5, side='left')
+        self.img_num_text = ctk.CTkLabel(inner_frame, text=' --/-- ', fg_color='black')
+        self.img_num_text.pack(pady=5, side='left')
         right_button = ctk.CTkButton(inner_frame, text='right', command=self.right_img)
         right_button.pack(pady=5, side='left')
 
         # Vertical Frame on the Left
         left_vertical_frame = ctk.CTkFrame(self, fg_color='lightgrey', width=50)
-        left_vertical_frame.grid(row=1, column=0, sticky='ns', pady=10)
+        left_vertical_frame.grid(row=0, column=0, rowspan=2, sticky='ns', pady=10)
 
         inner_frame = ctk.CTkFrame(left_vertical_frame, fg_color='yellow')
         inner_frame.pack(expand=True)
@@ -44,7 +45,7 @@ class Frame(ctk.CTkFrame):
         button3.pack(padx=2, pady=10)
 
         # Canvas for Image Viewer
-        self.canvas = ctk.CTkCanvas(self, bg='white', relief='ridge',
+        self.canvas = ctk.CTkCanvas(self, bg=settings.BACKGROUND_COLOR, relief='ridge',
                          bd=0, highlightthickness=0)
         self.canvas.grid(row=1, column=1, columnspan=2, sticky='nsew', padx=1, pady=2)
         # self.canvas.bind('<Configure>', self.resize_image)
@@ -71,24 +72,30 @@ class Frame(ctk.CTkFrame):
                     file_path = os.path.join(directory, file)
                     self.images.append(file_path)
         self.path(self.images)
+        self.total_images = len(self.images)
+        self.image_number()
         self.image_show()
 
     def edit_flag(self):
         self.flag_fun(True)
         print(self.images)
 
+    def image_number(self):
+        self.img_num_text.configure(text=f' {str(self.image_index + 1)} / {str(self.total_images)} ')
+
     def left_img(self):
         print('left image')
         self.image_index -= 1
         self.left_image(self.image_index)
+        self.image_number()
         self.image_show()
 
     def right_img(self):
         print('right image')
         self.image_index += 1
         self.right_image(self.image_index)
+        self.image_number()
         self.image_show()
-
 
     def image_show(self):
         print('image show')
