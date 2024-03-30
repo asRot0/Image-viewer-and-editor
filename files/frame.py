@@ -83,22 +83,38 @@ class Frame(ctk.CTkFrame):
 
     def image_number(self, check):
         if check > 0 and self.image_index < self.total_images-1:
-            if self.image_index > 0:
-                self.image_index += 1
-            else:
-                self.image_index = self.image_ind + 1
-            self.image_ind = self.image_index
-        elif check < 0:
-            if self.image_index > 0:
-                self.image_index -= 1
+            self.image_index += 1
+            if self.image_index >= 0:
                 self.image_ind = self.image_index
             else:
-                self.image_index -= 1
+                self.image_ind = self.total_images + self.image_index
+        elif check < 0 and -1*self.image_index < self.total_images-1:
+            self.image_index -= 1
+            if self.image_index >= 0:
+                self.image_ind = self.image_index
+            else:
                 self.image_ind = self.total_images + self.image_index
         else:
             self.image_index = 0
             self.image_ind = 0
         self.img_num_text.configure(text=f' {str(self.image_ind + 1)} / {str(self.total_images)} ')
+
+    '''
+    def image_number(self, check):
+        if check == 0:
+            self.image_index = 0
+        elif check > 0:
+            self.image_index = min(self.image_index + 1, self.total_images - 1)
+        elif check < 0:
+            self.image_index = max(self.image_index - 1, 0)
+
+        if self.image_index >= 0:
+            self.image_ind = self.image_index
+        else:
+            self.image_ind = self.total_images + self.image_index
+
+        self.img_num_text.configure(text=f' {str(self.image_ind + 1)} / {str(self.total_images)} ')
+        '''
 
     def left_img(self):
         print('left image')
