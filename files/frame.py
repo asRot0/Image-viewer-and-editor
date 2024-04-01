@@ -92,19 +92,25 @@ class Frame(ctk.CTkFrame):
 
     def image_number(self, check):
         if check == 2:
-            self.image_ind = self.image_index
+            if self.image_index >= 0:
+                self.image_ind = self.image_index
+            else:
+                self.image_ind = self.total_images + self.image_index
+
         elif check > 0 and self.image_index < self.total_images-1:
             self.image_index += 1
             if self.image_index >= 0:
                 self.image_ind = self.image_index
             else:
                 self.image_ind = self.total_images + self.image_index
+
         elif check < 0 and -1*self.image_index < self.total_images-1:
             self.image_index -= 1
             if self.image_index >= 0:
                 self.image_ind = self.image_index
             else:
                 self.image_ind = self.total_images + self.image_index
+
         else:
             self.image_index = 0
             self.image_ind = 0
@@ -168,7 +174,6 @@ class Frame(ctk.CTkFrame):
         if self.images:
             self.image_number(2)
             self.image_show()
-
 
     def place_image(self):
         # place image
