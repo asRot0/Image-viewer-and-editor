@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from tkinter import filedialog
+from frame_widgets import LeftImageButton, RightImageButton
 import settings
 import os
 from PIL import Image, ImageTk
@@ -21,14 +22,18 @@ class Frame(ctk.CTkFrame):
         header_frame = ctk.CTkFrame(self, fg_color=settings.BACKGROUND_COLOR)
         header_frame.grid(row=0, column=1, columnspan=3, sticky='ew')
 
-        inner_frame = ctk.CTkFrame(header_frame, fg_color='lightgrey')
+        inner_frame = ctk.CTkFrame(header_frame)
         inner_frame.pack(expand=True)
 
-        left_button = ctk.CTkButton(inner_frame, text='left', command=self.left_img)
+        left_button_image = ctk.CTkImage(dark_image=Image.open(settings.left_image_button))
+        left_button = LeftImageButton(parent=inner_frame, func=self.left_img, image=left_button_image)
         left_button.pack(pady=5, side='left')
-        self.img_num_text = ctk.CTkLabel(inner_frame, text=' --/-- ', fg_color='black')
+
+        self.img_num_text = ctk.CTkLabel(inner_frame, text=' --/-- ')
         self.img_num_text.pack(pady=5, side='left')
-        right_button = ctk.CTkButton(inner_frame, text='right', command=self.right_img)
+
+        right_button_image = ctk.CTkImage(dark_image=Image.open(settings.right_image_button))
+        right_button = RightImageButton(parent=inner_frame, func=self.right_img, image=right_button_image)
         right_button.pack(pady=5, side='left')
 
         # Vertical Frame on the Left
@@ -58,6 +63,7 @@ class Frame(ctk.CTkFrame):
     def open_image(self):
         # Open a file dialog to select a directory
         directory = filedialog.askdirectory()
+        print('hit the')
 
         if directory:
             # Get a list of image files in the selected directory
