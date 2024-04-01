@@ -1,5 +1,7 @@
 # icon
 title_ico = '../pic/line.ico'
+left_image_button = '../pic/left.png'
+right_image_button = '../pic/right.png'
 
 # values
 ROTATE_DEFAULT = 0
