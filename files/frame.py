@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 
 
 class Frame(ctk.CTkFrame):
-    def __init__(self, parent, flag_fun, path, left_image, right_image, text, initial_image_path, initial_image_index):
+    def __init__(self, parent, flag_fun, path, left_image, right_image, initial_image_path, initial_image_index):
         super().__init__(master=parent, fg_color=settings.BACKGROUND_COLOR)
         self.pack(expand=True, fill='both')
         self.flag_fun = flag_fun
@@ -16,10 +16,8 @@ class Frame(ctk.CTkFrame):
         self.right_image = right_image
         self.image_index = initial_image_index
         self.image_ind = 0
-        self.total_images = 0
         self.images = initial_image_path
         self.total_images = len(self.images)
-        print(text)
 
         # image navigation
         header_frame = ctk.CTkFrame(self, fg_color=settings.BACKGROUND_COLOR)
@@ -55,7 +53,7 @@ class Frame(ctk.CTkFrame):
 
         # Canvas for Image Viewer
         self.canvas = ctk.CTkCanvas(self, bg=settings.BACKGROUND_COLOR, relief='ridge',
-                         bd=0, highlightthickness=0)
+                                    bd=0, highlightthickness=0)
         self.canvas.grid(row=1, column=1, columnspan=2, sticky='nsew', padx=1, pady=2)
         # self.canvas.bind('<Configure>', self.resize_image)
         self.canvas.bind('<Configure>', self.resize_image)
@@ -66,7 +64,6 @@ class Frame(ctk.CTkFrame):
     def open_image(self):
         # Open a file dialog to select a directory
         directory = filedialog.askdirectory()
-        print('hit the')
 
         if directory:
             # Get a list of image files in the selected directory
@@ -88,7 +85,6 @@ class Frame(ctk.CTkFrame):
 
     def edit_flag(self):
         self.flag_fun(True)
-        print(self.images)
 
     def image_number(self, check):
         if check == 2:
@@ -134,19 +130,16 @@ class Frame(ctk.CTkFrame):
         '''
 
     def left_img(self):
-        print('left image')
         self.image_number(-1)
         self.left_image(self.image_index)
         self.image_show()
 
     def right_img(self):
-        print('right image')
         self.image_number(1)
         self.right_image(self.image_index)
         self.image_show()
 
     def image_show(self):
-        print('image show')
         self.image = Image.open(self.images[self.image_index])
         self.image_ratio = self.image.size[0] / self.image.size[1]
         # self.imagetk = ImageTk.PhotoImage(self.image)
@@ -162,7 +155,6 @@ class Frame(ctk.CTkFrame):
         self.place_image()
 
     def resize_image(self, event):
-        print(event)
         self.canvas_ratio = event.width / event.height
 
         # update canvas attributes
