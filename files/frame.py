@@ -7,16 +7,19 @@ from PIL import Image, ImageTk
 
 
 class Frame(ctk.CTkFrame):
-    def __init__(self, parent, flag_fun, path, left_image, right_image):
+    def __init__(self, parent, flag_fun, path, left_image, right_image, text, initial_image_path, initial_image_index):
         super().__init__(master=parent, fg_color=settings.BACKGROUND_COLOR)
         self.pack(expand=True, fill='both')
         self.flag_fun = flag_fun
         self.path = path
         self.left_image = left_image
         self.right_image = right_image
-        self.image_index = 0
+        self.image_index = initial_image_index
         self.image_ind = 0
         self.total_images = 0
+        self.images = initial_image_path
+        self.total_images = len(self.images)
+        print(text)
 
         # image navigation
         header_frame = ctk.CTkFrame(self, fg_color=settings.BACKGROUND_COLOR)
@@ -72,7 +75,7 @@ class Frame(ctk.CTkFrame):
 
             if image_files:
                 # Load and store the images
-                self.images = []
+                self.images.clear()
 
                 for file in image_files:
                     # Construct the full file path
@@ -88,7 +91,9 @@ class Frame(ctk.CTkFrame):
         print(self.images)
 
     def image_number(self, check):
-        if check > 0 and self.image_index < self.total_images-1:
+        if check == 2:
+            self.image_ind = self.image_index
+        elif check > 0 and self.image_index < self.total_images-1:
             self.image_index += 1
             if self.image_index >= 0:
                 self.image_ind = self.image_index
@@ -161,6 +166,7 @@ class Frame(ctk.CTkFrame):
         self.event_height = event.height
 
         if self.images:
+            self.image_number(2)
             self.image_show()
 
 
