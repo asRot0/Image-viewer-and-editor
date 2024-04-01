@@ -34,7 +34,7 @@ class App(ctk.CTk):
 
         # main frames
         self.frame = Frame(self, self.frame_close, self.path, self.left_image, self.right_image,
-                           text='hifk', initial_image_path=self.image_path, initial_image_index=self.image_index)
+                           initial_image_path=self.image_path, initial_image_index=self.image_index)
 
         # self.first_frame = FirstFrame(self)
 
@@ -48,26 +48,17 @@ class App(ctk.CTk):
     def frame_close(self, flag):
         if flag:
             self.frame.pack_forget()
-            print('close')
             self.first_frame = FirstFrame(self)
             # self.image_import = ImageImport(self.first_frame, self.import_image)
             self.import_image(self.image_path[self.image_index])
 
     def path(self, img_path):
-        print(img_path)
         self.image_path[:] = img_path
-        #img_path.clear()
-        print(self.image_path)
-        print(img_path)
 
     def left_image(self, left_img):
-        print('left click')
-        print(left_img)
         self.image_index = left_img
 
     def right_image(self, right_img):
-        print('right click')
-        print(right_img)
         self. image_index = right_img
 
     def init_parameters(self):
@@ -187,7 +178,7 @@ class App(ctk.CTk):
         # self.image_import.grid()
         self.first_frame.pack_forget()
         self.frame = Frame(self, self.frame_close, self.path, self.left_image, self.right_image,
-                           text='hikk', initial_image_path=self.image_path, initial_image_index=self.image_index)
+                           initial_image_path=self.image_path, initial_image_index=self.image_index)
 
     def export_image(self, name, file, path):
         export_string = f'{path}/{name}.{file}'
