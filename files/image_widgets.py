@@ -1,11 +1,12 @@
 import customtkinter as ctk
 from tkinter import filedialog
 import settings
+from PIL import Image
 
 
 class FirstFrame(ctk.CTkFrame):
     def __init__(self, parent):
-        super().__init__(master=parent)
+        super().__init__(master=parent, fg_color='transparent')
         self.pack(expand=True, fill='both')
 
         # layout
@@ -38,7 +39,16 @@ class ImageOutput(ctk.CTkCanvas):
 
 class CloseOutput(ctk.CTkButton):
     def __init__(self, parent, close_func):
-        super().__init__(master=parent, command=close_func, text='X', text_color=settings.WHITE,
-                         fg_color='transparent', width=40, height=40, corner_radius=0,
-                         hover_color=settings.CLOSE_RED)
+        super().__init__(master=parent, command=close_func, text='', text_color=settings.WHITE,
+                         fg_color='transparent', width=40, height=40, corner_radius=0, hover=False,
+                         image=ctk.CTkImage(dark_image=Image.open(settings.close_image)))
+
         self.place(relx=0.99, rely=0.02, anchor='ne')
+        self.bind('<Enter>', self.onEnter)
+        self.bind('<Leave>', self.onLeave)
+
+    def onEnter(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.close_enter_image)))
+
+    def onLeave(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.close_image)))
