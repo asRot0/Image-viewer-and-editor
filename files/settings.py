@@ -2,6 +2,8 @@
 title_ico = '../pic/line.ico'
 left_image_button = '../pic/left.png'
 right_image_button = '../pic/right.png'
+close_image = '../pic/x.png'
+close_enter_image = '../pic/cross.png'
 
 # values
 ROTATE_DEFAULT = 0
