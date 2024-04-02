@@ -12,6 +12,7 @@ class App(ctk.CTk):
         super().__init__()
 
         ctk.set_appearance_mode('dark')
+        # self.attributes('-alpha', 0.2)
         self.geometry('1000x600')
         self.title('Photo Editor')
         self.iconbitmap(settings.title_ico)
