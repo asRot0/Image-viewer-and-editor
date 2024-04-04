@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import filedialog
-from frame_widgets import LeftImageButton, RightImageButton
+from frame_widgets import LeftImageButton, RightImageButton, ImageInfo
 import settings
 import os
 from PIL import Image, ImageTk
@@ -38,24 +38,34 @@ class Frame(ctk.CTkFrame):
         right_button.pack(pady=5, side='left')
 
         # Vertical Frame on the Left
-        left_vertical_frame = ctk.CTkFrame(self, fg_color='lightgrey', width=50)
-        left_vertical_frame.grid(row=0, column=0, rowspan=2, sticky='ns', pady=10)
+        left_vertical_frame = ctk.CTkFrame(self, fg_color=settings.BUTTON_COLOR, width=50)
+        left_vertical_frame.grid(row=0, column=0, rowspan=2, sticky='ns', pady=20)
 
-        inner_frame = ctk.CTkFrame(left_vertical_frame, fg_color='yellow')
+        inner_frame = ctk.CTkFrame(left_vertical_frame, fg_color=settings.BLUE_BG)
         inner_frame.pack(expand=True)
 
         button1 = ctk.CTkButton(inner_frame, text='open', width=10, command=self.open_image)
         button1.pack(padx=2, pady=10)
         button2 = ctk.CTkButton(inner_frame, text='Edit', width=10, command=self.edit_flag)
         button2.pack(padx=2, pady=10)
-        button3 = ctk.CTkButton(inner_frame, text='Button 3', width=10)
+
+        # button3 = ctk.CTkButton(inner_frame, text='Button 3', width=10)
+
+        button3 = ImageInfo(inner_frame, 'Button_3', self.image_info)
         button3.pack(padx=2, pady=10)
+
+        button4 = ctk.CTkButton(inner_frame, text='Button 4', width=10)
+        button4.pack(padx=2, pady=10)
+        button5 = ctk.CTkButton(inner_frame,  text='Button 5', width=10)
+        button5.pack(padx=2, pady=10)
+
+        about_button = ctk.CTkButton(left_vertical_frame, text='. . .', width=5)
+        about_button.pack(padx=2, pady=2, side='bottom')
 
         # Canvas for Image Viewer
         self.canvas = ctk.CTkCanvas(self, bg=settings.BACKGROUND_COLOR, relief='ridge',
                                     bd=0, highlightthickness=0)
         self.canvas.grid(row=1, column=1, columnspan=2, sticky='nsew', padx=1, pady=2)
-        # self.canvas.bind('<Configure>', self.resize_image)
         self.canvas.bind('<Configure>', self.resize_image)
 
         self.grid_rowconfigure(1, weight=1)
@@ -172,3 +182,6 @@ class Frame(ctk.CTkFrame):
         resized_image = self.image.resize((self.image_width, self.image_height))
         self.image_tk = ImageTk.PhotoImage(resized_image)
         self.canvas.create_image(self.canvas_width / 2, self.canvas_height / 2, image=self.image_tk)
+
+    def image_info(self):
+        print(self.images[self.image_index])
