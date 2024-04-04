@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import filedialog
-from frame_widgets import LeftImageButton, RightImageButton, ImageInfo
+from frame_widgets import LeftImageButton, RightImageButton, ImageInfo, SlidePanel
 import settings
 import os
 from PIL import Image, ImageTk
@@ -18,6 +18,8 @@ class Frame(ctk.CTkFrame):
         self.image_ind = 0
         self.images = initial_image_path
         self.total_images = len(self.images)
+
+
 
         # image navigation
         header_frame = ctk.CTkFrame(self, fg_color=settings.BACKGROUND_COLOR)
@@ -54,19 +56,30 @@ class Frame(ctk.CTkFrame):
         button3 = ImageInfo(inner_frame, 'Button_3', self.image_info)
         button3.pack(padx=2, pady=10)
 
-        button4 = ctk.CTkButton(inner_frame, text='Button 4', width=10)
-        button4.pack(padx=2, pady=10)
-        button5 = ctk.CTkButton(inner_frame,  text='Button 5', width=10)
+        # button4 = ctk.CTkButton(inner_frame, text='Button 4', width=10, command=animated_panel.animate)
+        # button4.pack(padx=2, pady=10)
+
+        button5 = ctk.CTkButton(inner_frame,  text='Button 4', width=10)
         button5.pack(padx=2, pady=10)
 
         about_button = ctk.CTkButton(left_vertical_frame, text='. . .', width=5)
         about_button.pack(padx=2, pady=2, side='bottom')
 
         # Canvas for Image Viewer
-        self.canvas = ctk.CTkCanvas(self, bg=settings.BACKGROUND_COLOR, relief='ridge',
+        canvas_frame = ctk.CTkFrame(self, fg_color=settings.BACKGROUND_COLOR)
+        canvas_frame.grid(row=1, column=1, columnspan=2, sticky='nsew', padx=1, pady=2)
+
+        self.canvas = ctk.CTkCanvas(canvas_frame, bg=settings.BACKGROUND_COLOR, relief='ridge',
                                     bd=0, highlightthickness=0)
-        self.canvas.grid(row=1, column=1, columnspan=2, sticky='nsew', padx=1, pady=2)
+        self.canvas.pack(expand=True, fill='both')
+        # self.canvas.grid()
         self.canvas.bind('<Configure>', self.resize_image)
+
+        # Image info panel
+        animated_panel = SlidePanel(canvas_frame, 1, 0.7)
+
+        button4 = ctk.CTkButton(inner_frame, text='Button 5', width=10, command=animated_panel.animate)
+        button4.pack(padx=2, pady=10)
 
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(1, weight=1)
