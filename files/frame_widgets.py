@@ -4,10 +4,10 @@ from PIL import Image
 
 
 class ImageFolder(ctk.CTkButton):
-    def __init__(self, parent, text, open_image):
+    def __init__(self, parent, func):
         super().__init__(
             master=parent,
-            command=open_image,
+            command=func,
             width=10,
             height=10,
             text='',
@@ -26,11 +26,34 @@ class ImageFolder(ctk.CTkButton):
         self.configure(image=ctk.CTkImage(Image.open(settings.folder_image)))
 
 
-class ImageInfo(ctk.CTkButton):
-    def __init__(self, parent, text, image_info):
+class EditImage(ctk.CTkButton):
+    def __init__(self, parent, func):
         super().__init__(
             master=parent,
-            command=image_info,
+            command=func,
+            width=10,
+            height=10,
+            text='',
+            fg_color='transparent',
+            hover_color=None,
+            hover=False,
+            image=ctk.CTkImage(dark_image=Image.open(settings.editing_image)))
+
+        self.bind('<Enter>', self.onEnter)
+        self.bind('<Leave>', self.onLeave)
+
+    def onEnter(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.editing_enter_image)))
+
+    def onLeave(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.editing_image)))
+
+
+class ImageInfo(ctk.CTkButton):
+    def __init__(self, parent, func):
+        super().__init__(
+            master=parent,
+            command=func,
             width=10,
             height=10,
             text='',
@@ -41,27 +64,27 @@ class ImageInfo(ctk.CTkButton):
 
 
 class LeftImageButton(ctk.CTkButton):
-    def __init__(self, parent, func, image, text=''):
+    def __init__(self, parent, func):
         super().__init__(
             master=parent,
             command=func,
             width=50,
             height=10,
-            text=text,
-            image=image,
+            text='',
+            image=ctk.CTkImage(dark_image=Image.open(settings.left_image_button)),
             fg_color='transparent',
             hover_color=settings.DARK_GRAY)
 
 
 class RightImageButton(ctk.CTkButton):
-    def __init__(self, parent, func, image, text=''):
+    def __init__(self, parent, func):
         super().__init__(
             master=parent,
             command=func,
             width=50,
             height=10,
-            text=text,
-            image=image,
+            text='',
+            image=ctk.CTkImage(dark_image=Image.open(settings.right_image_button)),
             fg_color='transparent',
             hover_color=settings.DARK_GRAY)
 
