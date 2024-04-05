@@ -4,6 +4,10 @@ left_image_button = '../pic/left.png'
 right_image_button = '../pic/right.png'
 close_image = '../pic/x.png'
 close_enter_image = '../pic/cross.png'
+folder_image = '../pic/folder.png'
+folder_enter_image = '../pic/folder1.png'
+editing_image = '../pic/image-editing.png'
+editing_enter_image = '../pic/image-editing1.png'
 
 # values
 ROTATE_DEFAULT = 0
