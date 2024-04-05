@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import filedialog
-from frame_widgets import LeftImageButton, RightImageButton, ImageInfo, SlidePanel
+from frame_widgets import ImageFolder, LeftImageButton, RightImageButton, ImageInfo, SlidePanel
 import settings
 import os
 from PIL import Image, ImageTk
@@ -41,11 +41,13 @@ class Frame(ctk.CTkFrame):
         left_vertical_frame = ctk.CTkFrame(self, fg_color=settings.BUTTON_COLOR, width=50)
         left_vertical_frame.grid(row=0, column=0, rowspan=2, sticky='ns', pady=20)
 
-        inner_frame = ctk.CTkFrame(left_vertical_frame, fg_color=settings.BLUE_BG)
+        inner_frame = ctk.CTkFrame(left_vertical_frame, fg_color=settings.BUTTON_COLOR)
         inner_frame.pack(expand=True)
 
-        button1 = ctk.CTkButton(inner_frame, text='open', width=10, command=self.open_image)
+        # button1 = ctk.CTkButton(inner_frame, text='open', width=10, command=self.open_image)
+        button1 = ImageFolder(inner_frame, 'Button_1', self.open_image)
         button1.pack(padx=2, pady=10)
+
         button2 = ctk.CTkButton(inner_frame, text='Edit', width=10, command=self.edit_flag)
         button2.pack(padx=2, pady=10)
 
