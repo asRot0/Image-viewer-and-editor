@@ -12,7 +12,6 @@ class ImageFolder(ctk.CTkButton):
             height=10,
             text='',
             fg_color='transparent',
-            hover_color=None,
             hover=False,
             image=ctk.CTkImage(dark_image=Image.open(settings.folder_image)))
 
@@ -35,7 +34,6 @@ class EditImage(ctk.CTkButton):
             height=10,
             text='',
             fg_color='transparent',
-            hover_color=None,
             hover=False,
             image=ctk.CTkImage(dark_image=Image.open(settings.editing_image)))
 
@@ -49,7 +47,7 @@ class EditImage(ctk.CTkButton):
         self.configure(image=ctk.CTkImage(Image.open(settings.editing_image)))
 
 
-class ImageInfo(ctk.CTkButton):
+class ImageRotate(ctk.CTkButton):
     def __init__(self, parent, func):
         super().__init__(
             master=parent,
@@ -60,7 +58,16 @@ class ImageInfo(ctk.CTkButton):
             fg_color='transparent',
             corner_radius=0,
             hover=False,
-            image=ctk.CTkImage(dark_image=Image.open('../pic/folder.png')))
+            image=ctk.CTkImage(dark_image=Image.open(settings.rotate_image)))
+
+        self.bind('<Enter>', self.onEnter)
+        self.bind('<Leave>', self.onLeave)
+
+    def onEnter(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.rotate_enter_image)))
+
+    def onLeave(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.rotate_image)))
 
 
 class LeftImageButton(ctk.CTkButton):
@@ -71,9 +78,18 @@ class LeftImageButton(ctk.CTkButton):
             width=50,
             height=10,
             text='',
-            image=ctk.CTkImage(dark_image=Image.open(settings.left_image_button)),
+            image=ctk.CTkImage(dark_image=Image.open(settings.left_image)),
             fg_color='transparent',
-            hover_color=settings.DARK_GRAY)
+            hover=False)
+
+        self.bind('<Enter>', self.onEnter)
+        self.bind('<Leave>', self.onLeave)
+
+    def onEnter(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.left_enter_image)))
+
+    def onLeave(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.left_image)))
 
 
 class RightImageButton(ctk.CTkButton):
@@ -84,9 +100,18 @@ class RightImageButton(ctk.CTkButton):
             width=50,
             height=10,
             text='',
-            image=ctk.CTkImage(dark_image=Image.open(settings.right_image_button)),
+            image=ctk.CTkImage(dark_image=Image.open(settings.right_image)),
             fg_color='transparent',
-            hover_color=settings.DARK_GRAY)
+            hover=False)
+
+        self.bind('<Enter>', self.onEnter)
+        self.bind('<Leave>', self.onLeave)
+
+    def onEnter(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.right_enter_image)))
+
+    def onLeave(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.right_image)))
 
 
 class SlidePanel(ctk.CTkFrame):
