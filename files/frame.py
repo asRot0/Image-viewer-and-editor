@@ -19,8 +19,6 @@ class Frame(ctk.CTkFrame):
         self.images = initial_image_path
         self.total_images = len(self.images)
 
-
-
         # image navigation
         header_frame = ctk.CTkFrame(self, fg_color=settings.BACKGROUND_COLOR)
         header_frame.grid(row=0, column=1, columnspan=3, sticky='ew')
@@ -59,7 +57,10 @@ class Frame(ctk.CTkFrame):
         # button4 = ctk.CTkButton(inner_frame, text='Button 4', width=10, command=animated_panel.animate)
         # button4.pack(padx=2, pady=10)
 
-        button5 = ctk.CTkButton(inner_frame,  text='Button 4', width=10)
+        button4 = ctk.CTkButton(inner_frame,  text='Button 4', width=10)
+        button4.pack(padx=2, pady=10)
+
+        button5 = ctk.CTkButton(inner_frame, text='Button 5', width=10, command=self.image_info)
         button5.pack(padx=2, pady=10)
 
         about_button = ctk.CTkButton(left_vertical_frame, text='. . .', width=5)
@@ -76,13 +77,15 @@ class Frame(ctk.CTkFrame):
         self.canvas.bind('<Configure>', self.resize_image)
 
         # Image info panel
-        animated_panel = SlidePanel(canvas_frame, 1, 0.7)
-
-        button4 = ctk.CTkButton(inner_frame, text='Button 5', width=10, command=animated_panel.animate)
-        button4.pack(padx=2, pady=10)
+        self.animated_panel = SlidePanel(canvas_frame, 1, 0.7)
 
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(1, weight=1)
+
+    def image_info(self):
+        self.animated_panel.animate()
+        print(self.images[self.image_index])
+
 
     def open_image(self):
         # Open a file dialog to select a directory
@@ -196,5 +199,3 @@ class Frame(ctk.CTkFrame):
         self.image_tk = ImageTk.PhotoImage(resized_image)
         self.canvas.create_image(self.canvas_width / 2, self.canvas_height / 2, image=self.image_tk)
 
-    def image_info(self):
-        print(self.images[self.image_index])
