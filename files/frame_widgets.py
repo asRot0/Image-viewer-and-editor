@@ -1,5 +1,29 @@
 import customtkinter as ctk
 import settings
+from PIL import Image
+
+
+class ImageFolder(ctk.CTkButton):
+    def __init__(self, parent, text, open_image):
+        super().__init__(
+            master=parent,
+            command=open_image,
+            width=10,
+            height=10,
+            text='',
+            fg_color='transparent',
+            hover_color=None,
+            hover=False,
+            image=ctk.CTkImage(dark_image=Image.open(settings.folder_image)))
+
+        self.bind('<Enter>', self.onEnter)
+        self.bind('<Leave>', self.onLeave)
+
+    def onEnter(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.folder_enter_image)))
+
+    def onLeave(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.folder_image)))
 
 
 class ImageInfo(ctk.CTkButton):
@@ -9,9 +33,11 @@ class ImageInfo(ctk.CTkButton):
             command=image_info,
             width=10,
             height=10,
-            text=text,
+            text='',
             fg_color='transparent',
-            hover_color=None)
+            corner_radius=0,
+            hover=False,
+            image=ctk.CTkImage(dark_image=Image.open('../pic/folder.png')))
 
 
 class LeftImageButton(ctk.CTkButton):
