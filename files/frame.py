@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import filedialog
-from frame_widgets import ImageFolder, LeftImageButton, RightImageButton, ImageInfo, SlidePanel
+from frame_widgets import ImageFolder, EditImage, LeftImageButton, RightImageButton, ImageInfo, SlidePanel
 import settings
 import os
 from PIL import Image, ImageTk
@@ -16,6 +16,7 @@ class Frame(ctk.CTkFrame):
         self.right_image = right_image
         self.image_index = initial_image_index
         self.image_ind = 0
+        self.image = None
         self.images = initial_image_path
         self.total_images = len(self.images)
 
@@ -23,18 +24,16 @@ class Frame(ctk.CTkFrame):
         header_frame = ctk.CTkFrame(self, fg_color=settings.BACKGROUND_COLOR)
         header_frame.grid(row=0, column=1, columnspan=3, sticky='ew')
 
-        inner_frame = ctk.CTkFrame(header_frame)
+        inner_frame = ctk.CTkFrame(header_frame, fg_color=settings.BACKGROUND_COLOR)
         inner_frame.pack(expand=True)
 
-        left_button_image = ctk.CTkImage(dark_image=Image.open(settings.left_image_button))
-        left_button = LeftImageButton(parent=inner_frame, func=self.left_img, image=left_button_image)
+        left_button = LeftImageButton(inner_frame, self.left_img)
         left_button.pack(pady=5, side='left')
 
         self.img_num_text = ctk.CTkLabel(inner_frame, text=' --/-- ')
         self.img_num_text.pack(pady=5, side='left')
 
-        right_button_image = ctk.CTkImage(dark_image=Image.open(settings.right_image_button))
-        right_button = RightImageButton(parent=inner_frame, func=self.right_img, image=right_button_image)
+        right_button = RightImageButton(inner_frame, self.right_img)
         right_button.pack(pady=5, side='left')
 
         # Vertical Frame on the Left
@@ -45,21 +44,21 @@ class Frame(ctk.CTkFrame):
         inner_frame.pack(expand=True)
 
         # button1 = ctk.CTkButton(inner_frame, text='open', width=10, command=self.open_image)
-        button1 = ImageFolder(inner_frame, 'Button_1', self.open_image)
+        button1 = ImageFolder(inner_frame, self.open_image)
         button1.pack(padx=2, pady=10)
 
-        button2 = ctk.CTkButton(inner_frame, text='Edit', width=10, command=self.edit_flag)
+        # button2 = ctk.CTkButton(inner_frame, text='Edit', width=10, command=self.edit_flag)
+        button2 = EditImage(inner_frame, self.edit_flag)
         button2.pack(padx=2, pady=10)
 
         # button3 = ctk.CTkButton(inner_frame, text='Button 3', width=10)
-
-        button3 = ImageInfo(inner_frame, 'Button_3', self.image_info)
+        button3 = ImageInfo(inner_frame, self.image_rotate)
         button3.pack(padx=2, pady=10)
 
         # button4 = ctk.CTkButton(inner_frame, text='Button 4', width=10, command=animated_panel.animate)
         # button4.pack(padx=2, pady=10)
 
-        button4 = ctk.CTkButton(inner_frame,  text='Button 4', width=10)
+        button4 = ctk.CTkButton(inner_frame,  text='rotate', width=10, command=self.image_rotate)
         button4.pack(padx=2, pady=10)
 
         button5 = ctk.CTkButton(inner_frame, text='Button 5', width=10, command=self.image_info)
@@ -88,6 +87,16 @@ class Frame(ctk.CTkFrame):
         self.animated_panel.animate()
         print(self.images[self.image_index])
 
+    def image_rotate(self):
+        if self.image:
+            # Rotate the image by 90 degrees clockwise
+            self.image = self.image.rotate(-90, expand=True)  # Use negative angle for clockwise rotation
+
+            # Display the rotated image on the canvas
+            # self.place_image()
+            self.image_show(False)
+        else:
+            print('No image to rotate')
 
     def open_image(self):
         # Open a file dialog to select a directory
@@ -109,7 +118,7 @@ class Frame(ctk.CTkFrame):
         self.path(self.images)
         self.total_images = len(self.images)
         self.image_number(0)
-        self.image_show()
+        self.image_show(True)
 
     def edit_flag(self):
         self.flag_fun(True)
@@ -160,15 +169,16 @@ class Frame(ctk.CTkFrame):
     def left_img(self):
         self.image_number(-1)
         self.left_image(self.image_index)
-        self.image_show()
+        self.image_show(True)
 
     def right_img(self):
         self.image_number(1)
         self.right_image(self.image_index)
-        self.image_show()
+        self.image_show(True)
 
-    def image_show(self):
-        self.image = Image.open(self.images[self.image_index])
+    def image_show(self, flag):
+        if flag:
+            self.image = Image.open(self.images[self.image_index])
         self.image_ratio = self.image.size[0] / self.image.size[1]
         # self.imagetk = ImageTk.PhotoImage(self.image)
 
@@ -193,7 +203,7 @@ class Frame(ctk.CTkFrame):
 
         if self.images:
             self.image_number(2)
-            self.image_show()
+            self.image_show(True)
 
     def place_image(self):
         # place image
