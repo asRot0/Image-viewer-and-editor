@@ -1,5 +1,5 @@
-# icon
-title_ico = '../pic/line.ico'
+# icons
+title_ico = '../pic/image.ico'
 left_image = '../pic/left.png'
 left_enter_image = '../pic/left-arrow.png'
 right_image = '../pic/right.png'
