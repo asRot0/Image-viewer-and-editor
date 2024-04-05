@@ -1,13 +1,17 @@
 # icon
 title_ico = '../pic/line.ico'
-left_image_button = '../pic/left.png'
-right_image_button = '../pic/right.png'
+left_image = '../pic/left.png'
+left_enter_image = '../pic/left-arrow.png'
+right_image = '../pic/right.png'
+right_enter_image = '../pic/right-arrow.png'
 close_image = '../pic/x.png'
 close_enter_image = '../pic/cross.png'
 folder_image = '../pic/folder.png'
 folder_enter_image = '../pic/folder1.png'
 editing_image = '../pic/image-editing.png'
 editing_enter_image = '../pic/image-editing1.png'
+rotate_image = '../pic/rotation.png'
+rotate_enter_image = '../pic/rotation1.png'
 
 # values
 ROTATE_DEFAULT = 0
