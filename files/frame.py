@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import filedialog
-from frame_widgets import ImageFolder, EditImage, LeftImageButton, RightImageButton, ImageInfo, SlidePanel
+from frame_widgets import ImageFolder, EditImage, LeftImageButton, RightImageButton, ImageRotate, SlidePanel
 import settings
 import os
 from PIL import Image, ImageTk
@@ -52,7 +52,7 @@ class Frame(ctk.CTkFrame):
         button2.pack(padx=2, pady=10)
 
         # button3 = ctk.CTkButton(inner_frame, text='Button 3', width=10)
-        button3 = ImageInfo(inner_frame, self.image_rotate)
+        button3 = ImageRotate(inner_frame, self.image_rotate)
         button3.pack(padx=2, pady=10)
 
         # button4 = ctk.CTkButton(inner_frame, text='Button 4', width=10, command=animated_panel.animate)
