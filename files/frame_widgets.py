@@ -3,6 +3,44 @@ import settings
 from PIL import Image
 
 
+class ClickAttachedWindowButton(ctk.CTkButton):
+    def __init__(self, master, text, window_content):
+        super().__init__(master, text=text, command=self.on_click)
+        self.window_content = window_content
+        self.attached_window = None  # Flag to track window existence
+
+    def on_click(self):
+        if not self.attached_window or not self.attached_window.winfo_exists():
+            # Create a new window
+            self.attached_window = ctk.CTkToplevel(master=self, width=20, height=10)
+            self.attached_window.overrideredirect(True)  # Remove title bar
+            self.attached_window.wm_attributes("-topmost", True)  # Keep on top
+
+            # Create content within the window
+            for idx, content_text in enumerate(self.window_content, start=1):
+                ctk.CTkButton(self.attached_window, text=content_text, command=self.operation(idx)).pack()
+
+            # Calculate attached window position
+            x = self.winfo_rootx() + self.winfo_width()
+            y = self.winfo_rooty()
+
+            # Set geometry and show the window
+            self.attached_window.geometry(f"+{x}+{y}")
+            self.attached_window.deiconify()  # Ensure it's visible
+        else:
+            self.attached_window.destroy()
+
+    @staticmethod
+    def operation(idx):
+        def inner_operation():
+            if idx == 1:
+                print('Wallpaper')
+            elif idx == 2:
+                print('Lockscreen')
+
+        return inner_operation
+
+
 class ImageFolder(ctk.CTkButton):
     def __init__(self, parent, func):
         super().__init__(
