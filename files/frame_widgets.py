@@ -5,7 +5,8 @@ from PIL import Image
 
 class ClickAttachedWindowButton(ctk.CTkButton):
     def __init__(self, master, text, window_content):
-        super().__init__(master, text=text, command=self.on_click)
+        super().__init__(master, text=text, command=self.on_click, width=10)
+
         self.window_content = window_content
         self.attached_window = None  # Flag to track window existence
 
@@ -18,7 +19,7 @@ class ClickAttachedWindowButton(ctk.CTkButton):
 
             # Create content within the window
             for idx, content_text in enumerate(self.window_content, start=1):
-                ctk.CTkButton(self.attached_window, text=content_text, command=self.operation(idx)).pack()
+                ctk.CTkButton(self.attached_window, text=content_text, command=self.operation(idx)).pack(pady=2)
 
             # Calculate attached window position
             x = self.winfo_rootx() + self.winfo_width()
@@ -30,13 +31,14 @@ class ClickAttachedWindowButton(ctk.CTkButton):
         else:
             self.attached_window.destroy()
 
-    @staticmethod
-    def operation(idx):
+    def operation(self, idx):
         def inner_operation():
             if idx == 1:
                 print('Wallpaper')
+                # print(self.image_path)
             elif idx == 2:
                 print('Lockscreen')
+                # print(self.image_path)
 
         return inner_operation
 

@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from tkinter import filedialog
-from frame_widgets import ImageFolder, EditImage, LeftImageButton, RightImageButton, ImageRotate, SlidePanel, ClickAttachedWindowButton
+from frame_widgets import ImageFolder, EditImage, LeftImageButton, RightImageButton, ImageRotate, SlidePanel, \
+    ClickAttachedWindowButton
 import settings
 import os
 from PIL import Image, ImageTk
@@ -57,9 +58,6 @@ class Frame(ctk.CTkFrame):
         # button3 = ctk.CTkButton(inner_frame, text='Button 3', width=10)
         button3 = ImageRotate(inner_frame, self.image_rotate)
         button3.pack(padx=2, pady=10)
-
-        # button4 = ctk.CTkButton(inner_frame, text='Button 4', width=10, command=animated_panel.animate)
-        # button4.pack(padx=2, pady=10)
 
         # button4 = ctk.CTkButton(inner_frame,  text='set as', width=10, command=self.image_setas)
         button4 = ClickAttachedWindowButton(inner_frame, text='set as', window_content=self.window_content)
@@ -152,14 +150,14 @@ class Frame(ctk.CTkFrame):
             else:
                 self.image_ind = self.total_images + self.image_index
 
-        elif check > 0 and self.image_index < self.total_images-1:
+        elif check > 0 and self.image_index < self.total_images - 1:
             self.image_index += 1
             if self.image_index >= 0:
                 self.image_ind = self.image_index
             else:
                 self.image_ind = self.total_images + self.image_index
 
-        elif check < 0 and -1*self.image_index < self.total_images-1:
+        elif check < 0 and -1 * self.image_index < self.total_images - 1:
             self.image_index -= 1
             if self.image_index >= 0:
                 self.image_ind = self.image_index
@@ -200,6 +198,8 @@ class Frame(ctk.CTkFrame):
 
     def image_show(self, flag):
         if flag:
+            # self.image_path = self.images[self.image_index]
+            # self.image = Image.open(self.image_path)
             self.image = Image.open(self.images[self.image_index])
         self.image_ratio = self.image.size[0] / self.image.size[1]
         # self.imagetk = ImageTk.PhotoImage(self.image)
@@ -232,4 +232,3 @@ class Frame(ctk.CTkFrame):
         resized_image = self.image.resize((self.image_width, self.image_height))
         self.image_tk = ImageTk.PhotoImage(resized_image)
         self.canvas.create_image(self.canvas_width / 2, self.canvas_height / 2, image=self.image_tk)
-
