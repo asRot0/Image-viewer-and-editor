@@ -7,10 +7,12 @@ from PIL import Image, ImageTk
 
 
 class Frame(ctk.CTkFrame):
-    def __init__(self, parent, flag_fun, path, left_image, right_image, initial_image_path, initial_image_index):
+    def __init__(self, parent, flag_fun, flag_step, path, left_image, right_image,
+                 initial_image_path, initial_image_index):
         super().__init__(master=parent, fg_color=settings.BACKGROUND_COLOR)
         self.pack(expand=True, fill='both')
         self.flag_fun = flag_fun
+        self.flag_step = flag_step
         self.path = path
         self.left_image = left_image
         self.right_image = right_image
@@ -24,16 +26,16 @@ class Frame(ctk.CTkFrame):
         header_frame = ctk.CTkFrame(self, fg_color=settings.BACKGROUND_COLOR)
         header_frame.grid(row=0, column=1, columnspan=3, sticky='ew')
 
-        inner_frame = ctk.CTkFrame(header_frame, fg_color=settings.BACKGROUND_COLOR)
-        inner_frame.pack(expand=True)
+        self.inner_frame = ctk.CTkFrame(header_frame, fg_color=settings.BACKGROUND_COLOR)
+        # self.inner_frame.pack(expand=True)
 
-        left_button = LeftImageButton(inner_frame, self.left_img)
+        left_button = LeftImageButton(self.inner_frame, self.left_img)
         left_button.pack(pady=5, side='left')
 
-        self.img_num_text = ctk.CTkLabel(inner_frame, text=' --/-- ')
+        self.img_num_text = ctk.CTkLabel(self.inner_frame, text=' --/-- ')
         self.img_num_text.pack(pady=5, side='left')
 
-        right_button = RightImageButton(inner_frame, self.right_img)
+        right_button = RightImageButton(self.inner_frame, self.right_img)
         right_button.pack(pady=5, side='left')
 
         # Vertical Frame on the Left
@@ -58,7 +60,7 @@ class Frame(ctk.CTkFrame):
         # button4 = ctk.CTkButton(inner_frame, text='Button 4', width=10, command=animated_panel.animate)
         # button4.pack(padx=2, pady=10)
 
-        button4 = ctk.CTkButton(inner_frame,  text='rotate', width=10, command=self.image_rotate)
+        button4 = ctk.CTkButton(inner_frame,  text='set as', width=10, command=self.image_setas)
         button4.pack(padx=2, pady=10)
 
         button5 = ctk.CTkButton(inner_frame, text='Button 5', width=10, command=self.image_info)
@@ -83,9 +85,26 @@ class Frame(ctk.CTkFrame):
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(1, weight=1)
 
+        # Initially hide left and right buttons along with image number text
+        if self.flag_step:
+            self.hide_navigation_widgets()
+        else:
+            self.show_navigation_widgets()
+
+    def hide_navigation_widgets(self):
+        self.inner_frame.pack_forget()
+        # self.left_vertical_frame.pack_forget()
+
+    def show_navigation_widgets(self):
+        self.inner_frame.pack(expand=True)
+        # self.left_vertical_frame.pack(expand=True)
+
     def image_info(self):
         self.animated_panel.animate()
         print(self.images[self.image_index])
+
+    def image_setas(self):
+        print('set as ')
 
     def image_rotate(self):
         if self.image:
@@ -99,6 +118,9 @@ class Frame(ctk.CTkFrame):
             print('No image to rotate')
 
     def open_image(self):
+        # Show the navigation widgets after opening the image folder
+        self.show_navigation_widgets()
+
         # Open a file dialog to select a directory
         directory = filedialog.askdirectory()
 
@@ -119,6 +141,7 @@ class Frame(ctk.CTkFrame):
         self.total_images = len(self.images)
         self.image_number(0)
         self.image_show(True)
+        # self.show_navigation_widgets()
 
     def edit_flag(self):
         self.flag_fun(True)
