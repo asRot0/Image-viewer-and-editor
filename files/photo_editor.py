@@ -34,7 +34,7 @@ class App(ctk.CTk):
         self.image_index = 0
 
         # main frames
-        self.frame = Frame(self, self.frame_close, self.path, self.left_image, self.right_image,
+        self.frame = Frame(self, self.frame_close, True, self.path, self.left_image, self.right_image,
                            initial_image_path=self.image_path, initial_image_index=self.image_index)
 
         # self.first_frame = FirstFrame(self)
@@ -178,7 +178,7 @@ class App(ctk.CTk):
         self.menu.grid_forget()
         # self.image_import.grid()
         self.first_frame.pack_forget()
-        self.frame = Frame(self, self.frame_close, self.path, self.left_image, self.right_image,
+        self.frame = Frame(self, self.frame_close, False, self.path, self.left_image, self.right_image,
                            initial_image_path=self.image_path, initial_image_index=self.image_index)
 
     def export_image(self, name, file, path):
