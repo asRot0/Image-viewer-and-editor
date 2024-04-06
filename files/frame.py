@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import filedialog
-from frame_widgets import ImageFolder, EditImage, LeftImageButton, RightImageButton, ImageRotate, SlidePanel
+from frame_widgets import ImageFolder, EditImage, LeftImageButton, RightImageButton, ImageRotate, SlidePanel, ClickAttachedWindowButton
 import settings
 import os
 from PIL import Image, ImageTk
@@ -21,6 +21,7 @@ class Frame(ctk.CTkFrame):
         self.image = None
         self.images = initial_image_path
         self.total_images = len(self.images)
+        self.window_content = ["Set as Wallpaper", "Set as Lock Screen"]
 
         # image navigation
         header_frame = ctk.CTkFrame(self, fg_color=settings.BACKGROUND_COLOR)
@@ -60,7 +61,8 @@ class Frame(ctk.CTkFrame):
         # button4 = ctk.CTkButton(inner_frame, text='Button 4', width=10, command=animated_panel.animate)
         # button4.pack(padx=2, pady=10)
 
-        button4 = ctk.CTkButton(inner_frame,  text='set as', width=10, command=self.image_setas)
+        # button4 = ctk.CTkButton(inner_frame,  text='set as', width=10, command=self.image_setas)
+        button4 = ClickAttachedWindowButton(inner_frame, text='set as', window_content=self.window_content)
         button4.pack(padx=2, pady=10)
 
         button5 = ctk.CTkButton(inner_frame, text='Button 5', width=10, command=self.image_info)
@@ -102,9 +104,6 @@ class Frame(ctk.CTkFrame):
     def image_info(self):
         self.animated_panel.animate()
         print(self.images[self.image_index])
-
-    def image_setas(self):
-        print('set as ')
 
     def image_rotate(self):
         if self.image:
