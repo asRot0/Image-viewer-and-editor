@@ -4,11 +4,27 @@ from PIL import Image
 
 
 class ClickAttachedWindowButton(ctk.CTkButton):
-    def __init__(self, master, text, window_content):
-        super().__init__(master, text=text, command=self.on_click, width=10)
+    def __init__(self, master, window_content):
+        super().__init__(master,
+                         command=self.on_click,
+                         width=10,
+                         height=10,
+                         text='',
+                         fg_color='transparent',
+                         hover=False,
+                         image=ctk.CTkImage(dark_image=Image.open(settings.wallpaper_image)))
 
         self.window_content = window_content
         self.attached_window = None  # Flag to track window existence
+
+        self.bind('<Enter>', self.onEnter)
+        self.bind('<Leave>', self.onLeave)
+
+    def onEnter(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.wallpaper_enter_image)))
+
+    def onLeave(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.wallpaper_image)))
 
     def on_click(self):
         if not self.attached_window or not self.attached_window.winfo_exists():
