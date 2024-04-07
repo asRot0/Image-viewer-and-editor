@@ -60,7 +60,7 @@ class Frame(ctk.CTkFrame):
         button3.pack(padx=2, pady=10)
 
         # button4 = ctk.CTkButton(inner_frame,  text='set as', width=10, command=self.image_setas)
-        button4 = ClickAttachedWindowButton(inner_frame, text='set as', window_content=self.window_content)
+        button4 = ClickAttachedWindowButton(inner_frame, window_content=self.window_content)
         button4.pack(padx=2, pady=10)
 
         button5 = ctk.CTkButton(inner_frame, text='Button 5', width=10, command=self.image_info)
