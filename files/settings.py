@@ -12,6 +12,8 @@ editing_image = '../pic/image-editing.png'
 editing_enter_image = '../pic/image-editing1.png'
 rotate_image = '../pic/rotation.png'
 rotate_enter_image = '../pic/rotation1.png'
+wallpaper_image = '../pic/wallpaper.png'
+wallpaper_enter_image = '../pic/wallpaper1.png'
 
 # values
 ROTATE_DEFAULT = 0
