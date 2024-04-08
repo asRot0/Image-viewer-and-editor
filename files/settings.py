@@ -14,6 +14,8 @@ rotate_image = '../pic/rotation.png'
 rotate_enter_image = '../pic/rotation1.png'
 wallpaper_image = '../pic/wallpaper.png'
 wallpaper_enter_image = '../pic/wallpaper1.png'
+info_image = '../pic/info.png'
+info_enter_image = '../pic/info1.png'
 
 # values
 ROTATE_DEFAULT = 0
