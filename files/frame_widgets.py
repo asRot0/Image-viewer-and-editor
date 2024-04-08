@@ -126,6 +126,29 @@ class ImageRotate(ctk.CTkButton):
         self.configure(image=ctk.CTkImage(Image.open(settings.rotate_image)))
 
 
+class ImageInfo(ctk.CTkButton):
+    def __init__(self, parent, func):
+        super().__init__(
+            master=parent,
+            command=func,
+            width=10,
+            height=10,
+            text='',
+            fg_color='transparent',
+            corner_radius=0,
+            hover=False,
+            image=ctk.CTkImage(dark_image=Image.open(settings.info_image)))
+
+        self.bind('<Enter>', self.onEnter)
+        self.bind('<Leave>', self.onLeave)
+
+    def onEnter(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.info_enter_image)))
+
+    def onLeave(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.info_image)))
+
+
 class LeftImageButton(ctk.CTkButton):
     def __init__(self, parent, func):
         super().__init__(
