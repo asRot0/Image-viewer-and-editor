@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from tkinter import filedialog
-from frame_widgets import ImageFolder, EditImage, LeftImageButton, RightImageButton, ImageRotate, SlidePanel, \
-    ClickAttachedWindowButton
+from frame_widgets import ImageFolder, EditImage, ImageInfo, ImageRotate, LeftImageButton, RightImageButton,\
+    SlidePanel, ClickAttachedWindowButton
 import settings
 import os
 from PIL import Image, ImageTk
@@ -63,7 +63,8 @@ class Frame(ctk.CTkFrame):
         button4 = ClickAttachedWindowButton(inner_frame, window_content=self.window_content)
         button4.pack(padx=2, pady=10)
 
-        button5 = ctk.CTkButton(inner_frame, text='Button 5', width=10, command=self.image_info)
+        # button5 = ctk.CTkButton(inner_frame, text='Button 5', width=10, command=self.image_info)
+        button5 = ImageInfo(inner_frame, self.image_info)
         button5.pack(padx=2, pady=10)
 
         about_button = ctk.CTkButton(left_vertical_frame, text='. . .', width=5)
