@@ -45,27 +45,27 @@ class Frame(ctk.CTkFrame):
         left_vertical_frame.grid(row=0, column=0, rowspan=2, sticky='ns', pady=20)
 
         inner_frame = ctk.CTkFrame(left_vertical_frame, fg_color=settings.BUTTON_COLOR)
-        inner_frame.pack(expand=True)
+        inner_frame.pack(expand=True, padx=3)
 
         # button1 = ctk.CTkButton(inner_frame, text='open', width=10, command=self.open_image)
         button1 = ImageFolder(inner_frame, self.open_image)
-        button1.pack(padx=2, pady=10)
+        button1.pack(padx=3, pady=10)
 
         # button2 = ctk.CTkButton(inner_frame, text='Edit', width=10, command=self.edit_flag)
         button2 = EditImage(inner_frame, self.edit_flag)
-        button2.pack(padx=2, pady=10)
+        button2.pack(padx=3, pady=10)
 
         # button3 = ctk.CTkButton(inner_frame, text='Button 3', width=10)
         button3 = ImageRotate(inner_frame, self.image_rotate)
-        button3.pack(padx=2, pady=10)
+        button3.pack(padx=3, pady=10)
 
         # button4 = ctk.CTkButton(inner_frame,  text='set as', width=10, command=self.image_setas)
         button4 = ClickAttachedWindowButton(inner_frame, window_content=self.window_content)
-        button4.pack(padx=2, pady=10)
+        button4.pack(padx=3, pady=10)
 
         # button5 = ctk.CTkButton(inner_frame, text='Button 5', width=10, command=self.image_info)
         button5 = ImageInfo(inner_frame, self.image_info)
-        button5.pack(padx=2, pady=10)
+        button5.pack(padx=3, pady=10)
 
         about_button = ctk.CTkButton(left_vertical_frame, text='. . .', width=5)
         about_button.pack(padx=2, pady=2, side='bottom')
