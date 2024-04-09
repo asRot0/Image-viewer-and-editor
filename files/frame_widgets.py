@@ -3,6 +3,56 @@ import settings
 from PIL import Image
 
 
+class AboutInfo(ctk.CTkButton):
+    def __init__(self, master, window_content):
+        super().__init__(master,
+                         command=self.on_click,
+                         width=10,
+                         height=10,
+                         text='',
+                         fg_color='transparent',
+                         hover=False,
+                         image=ctk.CTkImage(dark_image=Image.open(settings.dots_image)))
+
+        self.window_content = window_content
+        self.attached_window = None  # Flag to track window existence
+
+        self.bind('<Enter>', self.onEnter)
+        self.bind('<Leave>', self.onLeave)
+
+    def onEnter(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.dots_enter_image)))
+
+    def onLeave(self, event):
+        self.configure(image=ctk.CTkImage(Image.open(settings.dots_image)))
+        if self.attached_window:
+            self.attached_window.destroy()
+
+    def on_click(self):
+        if not self.attached_window or not self.attached_window.winfo_exists():
+            # Create a new window
+            self.attached_window = ctk.CTkToplevel(master=self, width=20, height=10, fg_color='black')
+            self.attached_window.overrideredirect(True)  # Remove title bar
+            self.attached_window.wm_attributes("-topmost", True)  # Keep on top
+
+            # Create content within the window
+            # for idx, content_text in enumerate(self.window_content, start=1):
+            #     ctk.CTkButton(self.attached_window, text=content_text, command=self.operation(idx)).pack(pady=2)
+
+            ctk.CTkLabel(self.attached_window, text='this is the about of the \n image. where \n\n all of the things '
+                                                    'are stay.').pack(pady=2)
+
+            # Calculate attached window position
+            x = self.winfo_rootx() + self.winfo_width()
+            y = self.winfo_rooty()
+
+            # Set geometry and show the window
+            self.attached_window.geometry(f"+{x+10}+{y-20}")
+            self.attached_window.deiconify()  # Ensure it's visible
+        else:
+            self.attached_window.destroy()
+
+
 class ClickAttachedWindowButton(ctk.CTkButton):
     def __init__(self, master, window_content):
         super().__init__(master,
@@ -205,6 +255,9 @@ class SlidePanel(ctk.CTkFrame):
         # Animation logic
         self.pos = self.start_pos
         self.in_start_pos = True
+
+        # Close the panel
+        ctk.CTkButton(self, text='X', width=10, height=10, command=self.animate).place(relx=0.91, rely=0.01)
 
         # Layout
         self.place(relx=self.start_pos, rely=0.05, relwidth=self.width, relheight=0.9)
