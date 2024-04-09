@@ -16,6 +16,8 @@ wallpaper_image = '../pic/wallpaper.png'
 wallpaper_enter_image = '../pic/wallpaper1.png'
 info_image = '../pic/info.png'
 info_enter_image = '../pic/info1.png'
+dots_image = '../pic/dots.png'
+dots_enter_image = '../pic/dots1.png'
 
 # values
 ROTATE_DEFAULT = 0
