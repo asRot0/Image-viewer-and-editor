@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from tkinter import filedialog
 from frame_widgets import ImageFolder, EditImage, ImageInfo, ImageRotate, LeftImageButton, RightImageButton,\
-    SlidePanel, ClickAttachedWindowButton
+    SlidePanel, ClickAttachedWindowButton, AboutInfo
 import settings
 import os
 from PIL import Image, ImageTk
@@ -67,7 +67,8 @@ class Frame(ctk.CTkFrame):
         button5 = ImageInfo(inner_frame, self.image_info)
         button5.pack(padx=3, pady=10)
 
-        about_button = ctk.CTkButton(left_vertical_frame, text='. . .', width=5)
+        # about_button = ctk.CTkButton(left_vertical_frame, text='. . .', width=5)
+        about_button = AboutInfo(left_vertical_frame, window_content=self.window_content)
         about_button.pack(padx=2, pady=2, side='bottom')
 
         # Canvas for Image Viewer
@@ -81,7 +82,7 @@ class Frame(ctk.CTkFrame):
         self.canvas.bind('<Configure>', self.resize_image)
 
         # Image info panel
-        self.animated_panel = SlidePanel(canvas_frame, 1, 0.7)
+        self.animated_panel = SlidePanel(canvas_frame, 1, 0.75)
 
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(1, weight=1)
