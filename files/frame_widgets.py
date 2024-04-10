@@ -23,7 +23,7 @@ class AlertMsg(ctk.CTkToplevel):
 
 
 class AboutInfo(ctk.CTkButton):
-    def __init__(self, parent, window_content):
+    def __init__(self, parent):
         super().__init__(master=parent,
                          command=self.on_click,
                          width=10,
@@ -33,7 +33,6 @@ class AboutInfo(ctk.CTkButton):
                          hover=False,
                          image=ctk.CTkImage(dark_image=Image.open(settings.dots_image)))
 
-        self.window_content = window_content
         self.attached_window = None  # Flag to track window existence
 
         self.bind('<Enter>', self.onEnter)
@@ -54,10 +53,6 @@ class AboutInfo(ctk.CTkButton):
             self.attached_window.overrideredirect(True)  # Remove title bar
             self.attached_window.wm_attributes("-topmost", True)  # Keep on top
 
-            # Create content within the window
-            # for idx, content_text in enumerate(self.window_content, start=1):
-            #     ctk.CTkButton(self.attached_window, text=content_text, command=self.operation(idx)).pack(pady=2)
-
             ctk.CTkLabel(self.attached_window, text='this is the about of the \n image. where \n\n all of the things '
                                                     'are stay.').pack(pady=2)
 
@@ -73,9 +68,9 @@ class AboutInfo(ctk.CTkButton):
 
 
 class ClickAttachedWindowButton(ctk.CTkButton):
-    def __init__(self, parent, window_content):
+    def __init__(self, parent, func, window_content,):
         super().__init__(master=parent,
-                         command=self.on_click,
+                         command=func,
                          width=10,
                          height=10,
                          text='',
