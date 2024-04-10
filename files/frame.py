@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from tkinter import filedialog
 from frame_widgets import ImageFolder, EditImage, ImageInfo, ImageRotate, LeftImageButton, RightImageButton,\
-    SlidePanel, ClickAttachedWindowButton, AboutInfo, AlartMsg
+    SlidePanel, ClickAttachedWindowButton, AboutInfo, AlertMsg
 import settings
 import os
 from PIL import Image, ImageTk
@@ -147,8 +147,8 @@ class Frame(ctk.CTkFrame):
             self.flag_fun(True)
         else:
             x = self.winfo_rootx() + self.winfo_width()
-            y = self.winfo_rooty()
-            AlartMsg(self.canvas_frame, x, y)
+            y = self.winfo_rooty() + self.winfo_height()
+            AlertMsg(self.canvas_frame, x, y)
 
     def image_number(self, check):
         if check == 2:
