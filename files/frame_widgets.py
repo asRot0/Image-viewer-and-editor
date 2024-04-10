@@ -1,11 +1,27 @@
 import customtkinter as ctk
 import settings
 from PIL import Image
+from time import sleep
+
+
+class AlartMsg(ctk.CTkToplevel):
+    def __init__(self, parent, x, y):
+        super().__init__(master=parent, width=200, height=100, fg_color='white')
+
+        self.x = x
+        self.y = y
+
+        self.overrideredirect(True)
+        self.wm_attributes("-topmost", True)
+        self.geometry(f"+{x}+{y}")
+        self.deiconify()
+
+        self.after(1000, lambda: self.destroy())
 
 
 class AboutInfo(ctk.CTkButton):
-    def __init__(self, master, window_content):
-        super().__init__(master,
+    def __init__(self, parent, window_content):
+        super().__init__(master=parent,
                          command=self.on_click,
                          width=10,
                          height=10,
@@ -47,15 +63,15 @@ class AboutInfo(ctk.CTkButton):
             y = self.winfo_rooty()
 
             # Set geometry and show the window
-            self.attached_window.geometry(f"+{x+10}+{y-20}")
+            self.attached_window.geometry(f"+{x+10}+{y-22}")
             self.attached_window.deiconify()  # Ensure it's visible
         else:
             self.attached_window.destroy()
 
 
 class ClickAttachedWindowButton(ctk.CTkButton):
-    def __init__(self, master, window_content):
-        super().__init__(master,
+    def __init__(self, parent, window_content):
+        super().__init__(master=parent,
                          command=self.on_click,
                          width=10,
                          height=10,
