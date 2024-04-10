@@ -90,6 +90,9 @@ class ClickAttachedWindowButton(ctk.CTkButton):
     def onLeave(self, event):
         self.configure(image=ctk.CTkImage(Image.open(settings.wallpaper_image)))
 
+        if self.attached_window:
+            self.attached_window.after(2000, lambda: self.attached_window.destroy())
+
     def on_click(self):
         if not self.attached_window or not self.attached_window.winfo_exists():
             # Create a new window
