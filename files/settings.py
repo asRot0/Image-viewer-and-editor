@@ -35,6 +35,7 @@ INVERT_DEFAULT = False
 BACKGROUND_COLOR = '#242424'
 WHITE = '#FFF'
 GREY = 'grey'
+ALERT = '#752d28'
 BLUE = '#aec2d1'
 BLUE_HOVER = '#d3e1eb'
 BLUE_BG = '#90a399'
