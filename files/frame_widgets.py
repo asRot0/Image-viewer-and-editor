@@ -4,16 +4,19 @@ from PIL import Image
 from time import sleep
 
 
-class AlartMsg(ctk.CTkToplevel):
+class AlertMsg(ctk.CTkToplevel):
     def __init__(self, parent, x, y):
-        super().__init__(master=parent, width=200, height=100, fg_color='white')
+        super().__init__(master=parent, width=100, height=50, fg_color=settings.ALERT)
 
         self.x = x
         self.y = y
 
         self.overrideredirect(True)
         self.wm_attributes("-topmost", True)
-        self.geometry(f"+{x}+{y}")
+
+        ctk.CTkLabel(self, text='at first open your image folder').pack(padx=2, pady=2)
+
+        self.geometry(f"+{x-222}+{y-45}")
         self.deiconify()
 
         self.after(1000, lambda: self.destroy())
