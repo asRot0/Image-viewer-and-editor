@@ -177,6 +177,9 @@ class App(ctk.CTk):
         self.close_button.place_forget()
         self.menu.grid_forget()
         # self.image_import.grid()
+
+        self.init_parameters()  # reset all initial values
+
         self.first_frame.pack_forget()
         self.frame = Frame(self, self.frame_close, False, self.path, self.left_image, self.right_image,
                            initial_image_path=self.image_path, initial_image_index=self.image_index)
