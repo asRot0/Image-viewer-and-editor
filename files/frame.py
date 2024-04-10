@@ -60,15 +60,15 @@ class Frame(ctk.CTkFrame):
         button3.pack(padx=3, pady=10)
 
         # button4 = ctk.CTkButton(inner_frame,  text='set as', width=10, command=self.image_setas)
-        button4 = ClickAttachedWindowButton(inner_frame, window_content=self.window_content)
-        button4.pack(padx=3, pady=10)
+        self.button4 = ClickAttachedWindowButton(inner_frame, self.set_as, self.window_content)
+        self.button4.pack(padx=3, pady=10)
 
         # button5 = ctk.CTkButton(inner_frame, text='Button 5', width=10, command=self.image_info)
         button5 = ImageInfo(inner_frame, self.image_info)
         button5.pack(padx=3, pady=10)
 
         # about_button = ctk.CTkButton(left_vertical_frame, text='. . .', width=5)
-        about_button = AboutInfo(left_vertical_frame, window_content=self.window_content)
+        about_button = AboutInfo(left_vertical_frame)
         about_button.pack(padx=2, pady=2, side='bottom')
 
         # Canvas for Image Viewer
@@ -102,8 +102,21 @@ class Frame(ctk.CTkFrame):
         # self.left_vertical_frame.pack(expand=True)
 
     def image_info(self):
-        self.animated_panel.animate()
-        print(self.images[self.image_index])
+        if self.image:
+            self.animated_panel.animate()
+            print(self.images[self.image_index])
+        else:
+            x = self.winfo_rootx() + self.winfo_width()
+            y = self.winfo_rooty() + self.winfo_height()
+            AlertMsg(self.canvas_frame, x, y)
+
+    def set_as(self):
+        if self.image:
+            self.button4.on_click()
+        else:
+            x = self.winfo_rootx() + self.winfo_width()
+            y = self.winfo_rooty() + self.winfo_height()
+            AlertMsg(self.canvas_frame, x, y)
 
     def image_rotate(self):
         if self.image:
@@ -114,7 +127,9 @@ class Frame(ctk.CTkFrame):
             # self.place_image()
             self.image_show(False)
         else:
-            print('No image to rotate')
+            x = self.winfo_rootx() + self.winfo_width()
+            y = self.winfo_rooty() + self.winfo_height()
+            AlertMsg(self.canvas_frame, x, y)
 
     def open_image(self):
         # Show the navigation widgets after opening the image folder
