@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from tkinter import filedialog
 from frame_widgets import ImageFolder, EditImage, ImageInfo, ImageRotate, LeftImageButton, RightImageButton,\
-    SlidePanel, ClickAttachedWindowButton, AboutInfo
+    SlidePanel, ClickAttachedWindowButton, AboutInfo, AlartMsg
 import settings
 import os
 from PIL import Image, ImageTk
@@ -72,17 +72,17 @@ class Frame(ctk.CTkFrame):
         about_button.pack(padx=2, pady=2, side='bottom')
 
         # Canvas for Image Viewer
-        canvas_frame = ctk.CTkFrame(self, fg_color=settings.BACKGROUND_COLOR)
-        canvas_frame.grid(row=1, column=1, columnspan=2, sticky='nsew', padx=1, pady=2)
+        self.canvas_frame = ctk.CTkFrame(self, fg_color=settings.BACKGROUND_COLOR)
+        self.canvas_frame.grid(row=1, column=1, columnspan=2, sticky='nsew', padx=1, pady=2)
 
-        self.canvas = ctk.CTkCanvas(canvas_frame, bg=settings.BACKGROUND_COLOR, relief='ridge',
+        self.canvas = ctk.CTkCanvas(self.canvas_frame, bg=settings.BACKGROUND_COLOR, relief='ridge',
                                     bd=0, highlightthickness=0)
         self.canvas.pack(expand=True, fill='both')
         # self.canvas.grid()
         self.canvas.bind('<Configure>', self.resize_image)
 
         # Image info panel
-        self.animated_panel = SlidePanel(canvas_frame, 1, 0.75)
+        self.animated_panel = SlidePanel(self.canvas_frame, 1, 0.75)
 
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(1, weight=1)
@@ -143,7 +143,12 @@ class Frame(ctk.CTkFrame):
         # self.show_navigation_widgets()
 
     def edit_flag(self):
-        self.flag_fun(True)
+        if self.image:
+            self.flag_fun(True)
+        else:
+            x = self.winfo_rootx() + self.winfo_width()
+            y = self.winfo_rooty()
+            AlartMsg(self.canvas_frame, x, y)
 
     def image_number(self, check):
         if check == 2:
