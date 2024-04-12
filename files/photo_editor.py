@@ -13,6 +13,7 @@ class App(ctk.CTk):
 
         ctk.set_appearance_mode('dark')
         # self.attributes('-topmost', True)
+        # self.attributes('-fullscreen', True)
         self.geometry('1000x600')
         self.title('Photo Editor')
         self.iconbitmap(settings.title_ico)
