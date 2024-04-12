@@ -68,7 +68,7 @@ class AboutInfo(ctk.CTkButton):
 
 
 class ClickAttachedWindowButton(ctk.CTkButton):
-    def __init__(self, parent, func, window_content,):
+    def __init__(self, parent, func, window_content):
         super().__init__(master=parent,
                          command=func,
                          width=10,
