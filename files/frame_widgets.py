@@ -272,7 +272,7 @@ class SlidePanel(ctk.CTkFrame):
         self.pos = self.start_pos
         self.in_start_pos = True
 
-        # Close the panel
+        # Close button
         ctk.CTkButton(self, text='X', width=10, height=10, command=self.animate).place(relx=0.91, rely=0.01)
 
         # Layout
