@@ -1,7 +1,6 @@
 import customtkinter as ctk
 import settings
 from PIL import Image
-from time import sleep
 
 
 class AlertMsg(ctk.CTkToplevel):
