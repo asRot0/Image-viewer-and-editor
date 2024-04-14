@@ -275,8 +275,9 @@ class SlidePanel(ctk.CTkFrame):
         self.in_start_pos = True
 
         # Close button
-        ctk.CTkButton(self, text='X', width=10, height=10, command=self.animate).place(relx=0.91, rely=0.01)
-        print('panel create')
+        ctk.CTkButton(self, text='', width=10, height=10, command=self.animate,
+                      fg_color='transparent', hover_color=settings.DARK_GRAY,
+                      image=ctk.CTkImage(dark_image=Image.open('../pic/close.png'))).place(relx=0.89, rely=0.005)
 
         # Image info
         self.image_info_label = ctk.CTkLabel(self, text='Image Info')
@@ -286,13 +287,13 @@ class SlidePanel(ctk.CTkFrame):
         frame.pack(expand=True, fill='both', padx=5, pady=10)
 
         ctk.CTkLabel(frame, text='Image Name').pack(anchor='w')
-        frame_box = ctk.CTkFrame(frame, fg_color=settings.GREY)
+        frame_box = ctk.CTkFrame(frame, fg_color=settings.DARK_GRAY)
         frame_box.pack(fill='both', padx=5)
         self.image_name = ctk.CTkLabel(frame_box, text='', wraplength=200)
         self.image_name.pack(fill='both', padx=5, pady=1)
 
         ctk.CTkLabel(frame, text='Date').pack(anchor='w')
-        frame_box = ctk.CTkFrame(frame, fg_color=settings.GREY)
+        frame_box = ctk.CTkFrame(frame, fg_color=settings.DARK_GRAY)
         frame_box.pack(fill='both', padx=5)
         self.image_date = ctk.CTkLabel(frame_box, text='')
         self.image_date.pack(fill='both', padx=5, pady=1)
@@ -310,7 +311,7 @@ class SlidePanel(ctk.CTkFrame):
         self.image_pixel.pack(anchor='w')
 
         ctk.CTkLabel(frame, text='Path').pack(anchor='w')
-        frame_box = ctk.CTkFrame(frame, fg_color=settings.GREY)
+        frame_box = ctk.CTkFrame(frame, fg_color=settings.DARK_GRAY)
         frame_box.pack(fill='both', padx=5)
         self.image_path = ctk.CTkLabel(frame_box, text='', wraplength=200)
         self.image_path.pack(fill='both', padx=5, pady=1)
@@ -318,7 +319,7 @@ class SlidePanel(ctk.CTkFrame):
         # Layout
         self.place(relx=self.start_pos, rely=0.05, relwidth=self.width, relheight=0.9)
 
-    def set_image_path(self, image_path):
+    def set_image_info(self, image_path):
         # Extract image name and size
         image_name = os.path.basename(image_path)
         image_size = os.path.getsize(image_path)
@@ -350,7 +351,7 @@ class SlidePanel(ctk.CTkFrame):
     def animate(self):
         if self.in_start_pos:
             # self.image_path.configure(text=settings.image_info['image_path'])
-            self.set_image_path(settings.image_info['image_path'])
+            self.set_image_info(settings.image_info['image_path'])
             self.animate_forward()
         else:
             self.animate_backwards()
