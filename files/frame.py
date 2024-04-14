@@ -103,6 +103,7 @@ class Frame(ctk.CTkFrame):
 
     def image_info(self):
         if self.image:
+            settings.image_info['image_path'] = self.images[self.image_index]
             self.animated_panel.animate()
             print(self.images[self.image_index])
         else:
