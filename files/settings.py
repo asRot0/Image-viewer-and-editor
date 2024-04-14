@@ -51,3 +51,11 @@ BUTTON_HOVER_COLOR = '#69697d'
 DROPDOWN_MAIN_COLOR = '#444'
 DROPDOWN_HOVER_COLOR = '#333'
 DROPDOWN_MENU_COLOR = '#666'
+
+# imaage info
+
+image_info = {
+    'image_path': '',
+    'image_size': ''
+
+}
