@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import settings
 from PIL import Image
+import os
 
 
 class AlertMsg(ctk.CTkToplevel):
@@ -261,7 +262,7 @@ class RightImageButton(ctk.CTkButton):
 
 class SlidePanel(ctk.CTkFrame):
     def __init__(self, parent, start_pos, end_pos):
-        super().__init__(master=parent, fg_color='red')
+        super().__init__(master=parent)
 
         # General attributes
         self.start_pos = start_pos
@@ -274,31 +275,69 @@ class SlidePanel(ctk.CTkFrame):
 
         # Close button
         ctk.CTkButton(self, text='X', width=10, height=10, command=self.animate).place(relx=0.91, rely=0.01)
+        print('panel create')
+
+        # Image info
+        self.image_info_label = ctk.CTkLabel(self, text='Image Info:')
+        self.image_info_label.pack(side='top')
+
+        frame = ctk.CTkFrame(self, fg_color='transparent')
+        frame.pack(expand=True, fill='both', padx=5, pady=10)
+
+        ctk.CTkLabel(frame, text='Image Name').pack(anchor='w')
+
+        self.image_info_text = ctk.CTkLabel(frame, text='', wraplength=150)
+        self.image_info_text.pack()
 
         # Layout
         self.place(relx=self.start_pos, rely=0.05, relwidth=self.width, relheight=0.9)
 
+    def set_image_path(self, image_path):
+        # Extract image name and size
+        image_name = os.path.basename(image_path)
+        image_size = os.path.getsize(image_path)
+
+        # Open the image to get additional metadata
+        try:
+            with Image.open(image_path) as img:
+                image_format = img.format
+                image_mode = img.mode
+                image_dimensions = img.size
+        except Exception as e:
+            print(f"Error opening image: {e}")
+            image_format = "Unknown"
+            image_mode = "Unknown"
+            image_dimensions = (0, 0)
+
+        # Format the image info to display
+        formatted_info = f"Path: {image_path}\nName: {image_name}\nSize: {image_size} bytes\nFormat: {image_format}\nMode: {image_mode}\nDimensions: {image_dimensions}"
+
+        # Set the image info text
+        self.image_info_text.configure(text=formatted_info)
+
     def animate(self):
         if self.in_start_pos:
+            # self.image_path.configure(text=settings.image_info['image_path'])
+            self.set_image_path(settings.image_info['image_path'])
             self.animate_forward()
         else:
             self.animate_backwards()
 
     def animate_forward(self):
-        if self.pos > self.end_pos + 0.008:  # Check if position is greater than the end position + threshold
-            self.pos -= 0.008
+        if self.pos > self.end_pos + 0.09:  # Check if position is greater than the end position + threshold
+            self.pos -= 0.09
             self.place(relx=self.pos, rely=0.05, relwidth=self.width, relheight=0.9)
-            self.after(10, self.animate_forward)
+            self.after(40, self.animate_forward)
         else:
             self.pos = self.end_pos  # Ensure position reaches end position accurately
             self.place(relx=self.pos, rely=0.05, relwidth=self.width, relheight=0.9)
             self.in_start_pos = False
 
     def animate_backwards(self):
-        if self.pos < self.start_pos - 0.008:  # Check if position is less than the start position - threshold
-            self.pos += 0.008
+        if self.pos < self.start_pos - 0.09:  # Check if position is less than the start position - threshold
+            self.pos += 0.09
             self.place(relx=self.pos, rely=0.05, relwidth=self.width, relheight=0.9)
-            self.after(10, self.animate_backwards)
+            self.after(40, self.animate_backwards)
         else:
             self.pos = self.start_pos  # Ensure position reaches start position accurately
             self.place(relx=self.pos, rely=0.05, relwidth=self.width, relheight=0.9)
