@@ -2,6 +2,7 @@ import customtkinter as ctk
 import settings
 from PIL import Image
 import os
+from datetime import datetime
 
 
 class AlertMsg(ctk.CTkToplevel):
@@ -278,16 +279,41 @@ class SlidePanel(ctk.CTkFrame):
         print('panel create')
 
         # Image info
-        self.image_info_label = ctk.CTkLabel(self, text='Image Info:')
+        self.image_info_label = ctk.CTkLabel(self, text='Image Info')
         self.image_info_label.pack(side='top')
 
         frame = ctk.CTkFrame(self, fg_color='transparent')
         frame.pack(expand=True, fill='both', padx=5, pady=10)
 
         ctk.CTkLabel(frame, text='Image Name').pack(anchor='w')
+        frame_box = ctk.CTkFrame(frame, fg_color=settings.GREY)
+        frame_box.pack(fill='both', padx=5)
+        self.image_name = ctk.CTkLabel(frame_box, text='', wraplength=200)
+        self.image_name.pack(fill='both', padx=5, pady=1)
 
-        self.image_info_text = ctk.CTkLabel(frame, text='', wraplength=150)
-        self.image_info_text.pack()
+        ctk.CTkLabel(frame, text='Date').pack(anchor='w')
+        frame_box = ctk.CTkFrame(frame, fg_color=settings.GREY)
+        frame_box.pack(fill='both', padx=5)
+        self.image_date = ctk.CTkLabel(frame_box, text='')
+        self.image_date.pack(fill='both', padx=5, pady=1)
+
+        self.image_size = ctk.CTkLabel(frame, text='')
+        self.image_size.pack(anchor='w')
+
+        self.image_format = ctk.CTkLabel(frame, text='')
+        self.image_format.pack(anchor='w')
+
+        self.image_mode = ctk.CTkLabel(frame, text='')
+        self.image_mode.pack(anchor='w')
+
+        self.image_pixel = ctk.CTkLabel(frame, text='')
+        self.image_pixel.pack(anchor='w')
+
+        ctk.CTkLabel(frame, text='Path').pack(anchor='w')
+        frame_box = ctk.CTkFrame(frame, fg_color=settings.GREY)
+        frame_box.pack(fill='both', padx=5)
+        self.image_path = ctk.CTkLabel(frame_box, text='', wraplength=200)
+        self.image_path.pack(fill='both', padx=5, pady=1)
 
         # Layout
         self.place(relx=self.start_pos, rely=0.05, relwidth=self.width, relheight=0.9)
@@ -296,6 +322,9 @@ class SlidePanel(ctk.CTkFrame):
         # Extract image name and size
         image_name = os.path.basename(image_path)
         image_size = os.path.getsize(image_path)
+
+        modified_time = os.path.getmtime(image_path)
+        modified_date = datetime.fromtimestamp(modified_time)
 
         # Open the image to get additional metadata
         try:
@@ -309,11 +338,14 @@ class SlidePanel(ctk.CTkFrame):
             image_mode = "Unknown"
             image_dimensions = (0, 0)
 
-        # Format the image info to display
-        formatted_info = f"Path: {image_path}\nName: {image_name}\nSize: {image_size} bytes\nFormat: {image_format}\nMode: {image_mode}\nDimensions: {image_dimensions}"
-
         # Set the image info text
-        self.image_info_text.configure(text=formatted_info)
+        self.image_name.configure(text=image_name)
+        self.image_date.configure(text=modified_date)
+        self.image_size.configure(text=f'Size:    {image_size} bytes')
+        self.image_format.configure(text=f'Format:   {image_format}')
+        self.image_mode.configure(text=f'Mode:    {image_mode}')
+        self.image_pixel.configure(text=f'Resolution:  {image_dimensions[0]} x {image_dimensions[1]} pixels')
+        self.image_path.configure(text=image_path)
 
     def animate(self):
         if self.in_start_pos:
@@ -327,17 +359,17 @@ class SlidePanel(ctk.CTkFrame):
         if self.pos > self.end_pos + 0.09:  # Check if position is greater than the end position + threshold
             self.pos -= 0.09
             self.place(relx=self.pos, rely=0.05, relwidth=self.width, relheight=0.9)
-            self.after(40, self.animate_forward)
+            self.after(10, self.animate_forward)
         else:
             self.pos = self.end_pos  # Ensure position reaches end position accurately
             self.place(relx=self.pos, rely=0.05, relwidth=self.width, relheight=0.9)
             self.in_start_pos = False
 
     def animate_backwards(self):
-        if self.pos < self.start_pos - 0.09:  # Check if position is less than the start position - threshold
-            self.pos += 0.09
+        if self.pos < self.start_pos - 0.9:  # Check if position is less than the start position - threshold
+            self.pos += 0.9
             self.place(relx=self.pos, rely=0.05, relwidth=self.width, relheight=0.9)
-            self.after(40, self.animate_backwards)
+            self.after(10, self.animate_backwards)
         else:
             self.pos = self.start_pos  # Ensure position reaches start position accurately
             self.place(relx=self.pos, rely=0.05, relwidth=self.width, relheight=0.9)
