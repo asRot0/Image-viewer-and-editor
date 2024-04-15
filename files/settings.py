@@ -59,3 +59,13 @@ image_info = {
     'image_size': ''
 
 }
+
+about = {
+    'title': 'PhotoFly',
+    'developer': 'Asif Ahmed (asRot0)',
+    'version': '1.0.1',
+    'released': '2024',
+    'license': 'MIT license',
+    'copyright': '© 2024 asRot0'
+
+}
