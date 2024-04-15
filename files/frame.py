@@ -102,7 +102,7 @@ class Frame(ctk.CTkFrame):
         # self.left_vertical_frame.pack(expand=True)
 
     def image_info(self):
-        if self.image:
+        if self.images:
             settings.image_info['image_path'] = self.images[self.image_index]
             self.animated_panel.animate()
             # print(self.images[self.image_index])
@@ -112,7 +112,7 @@ class Frame(ctk.CTkFrame):
             AlertMsg(self.canvas_frame, x, y)
 
     def set_as(self):
-        if self.image:
+        if self.images:
             self.button4.on_click()
         else:
             x = self.winfo_rootx() + self.winfo_width()
@@ -120,7 +120,7 @@ class Frame(ctk.CTkFrame):
             AlertMsg(self.canvas_frame, x, y)
 
     def image_rotate(self):
-        if self.image:
+        if self.images:
             # Rotate the image by 90 degrees clockwise
             self.image = self.image.rotate(-90, expand=True)  # Use negative angle for clockwise rotation
 
@@ -162,7 +162,7 @@ class Frame(ctk.CTkFrame):
         # self.show_navigation_widgets()
 
     def edit_flag(self):
-        if self.image:
+        if self.images:
             self.flag_fun(True)
         else:
             x = self.winfo_rootx() + self.winfo_width()
@@ -254,7 +254,7 @@ class Frame(ctk.CTkFrame):
             self.image_show(True)
         else:
             self.canvas_frame.grid(row=0, column=1, columnspan=2, rowspan=2, sticky='nsew', padx=1, pady=2)
-            self.image = Image.open('../pic/screenshot1.png')
+            self.image = Image.open('../pic/dinosaur2.png')
             self.image_show(False)
 
     def place_image(self):
