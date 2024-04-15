@@ -54,15 +54,24 @@ class AboutInfo(ctk.CTkButton):
             self.attached_window.overrideredirect(True)  # Remove title bar
             self.attached_window.wm_attributes("-topmost", True)  # Keep on top
 
-            ctk.CTkLabel(self.attached_window, text='this is the about of the \n image. where \n\n all of the things '
-                                                    'are stay.').pack(pady=2)
+            frame = ctk.CTkFrame(self.attached_window, fg_color='transparent')
+            frame.pack(side='top')
+
+            ctk.CTkLabel(frame, image=ctk.CTkImage(Image.open(settings.title_ico)), text='').pack(side='left')
+            ctk.CTkLabel(frame, text=settings.about['title']).pack(side='left', padx=5)
+            ctk.CTkLabel(self.attached_window, text=f"{'Developer:'} {settings.about['developer']}").pack(anchor='w', padx=2)
+            ctk.CTkLabel(self.attached_window, text=f"{'Version:'} {settings.about['version']}").pack(anchor='w', padx=2)
+            ctk.CTkLabel(self.attached_window, text=f"{'Released:'} {settings.about['released']}").pack(anchor='w', padx=2)
+            ctk.CTkLabel(self.attached_window, text=f"{'License:'} {settings.about['license']}").pack(anchor='w', padx=2)
+            ctk.CTkLabel(self.attached_window, text=f"{'Copyright:'} {settings.about['copyright']}").pack(anchor='w', padx=2)
+
 
             # Calculate attached window position
             x = self.winfo_rootx() + self.winfo_width()
             y = self.winfo_rooty()
 
             # Set geometry and show the window
-            self.attached_window.geometry(f"+{x+10}+{y-22}")
+            self.attached_window.geometry(f"+{x+10}+{y-150}")
             self.attached_window.deiconify()  # Ensure it's visible
         else:
             self.attached_window.destroy()
