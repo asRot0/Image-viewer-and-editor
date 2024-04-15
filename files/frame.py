@@ -154,8 +154,11 @@ class Frame(ctk.CTkFrame):
                     self.images.append(file_path)
         self.path(self.images)
         self.total_images = len(self.images)
-        self.image_number(0)
-        self.image_show(True)
+
+        if self.images:
+            self.canvas_frame.grid(row=1, column=1, columnspan=2, sticky='nsew', padx=1, pady=2)
+            self.image_number(0)
+            self.image_show(True)
         # self.show_navigation_widgets()
 
     def edit_flag(self):
@@ -249,6 +252,10 @@ class Frame(ctk.CTkFrame):
         if self.images:
             self.image_number(2)
             self.image_show(True)
+        else:
+            self.canvas_frame.grid(row=0, column=1, columnspan=2, rowspan=2, sticky='nsew', padx=1, pady=2)
+            self.image = Image.open('../pic/screenshot1.png')
+            self.image_show(False)
 
     def place_image(self):
         # place image

@@ -50,21 +50,20 @@ class AboutInfo(ctk.CTkButton):
     def on_click(self):
         if not self.attached_window or not self.attached_window.winfo_exists():
             # Create a new window
-            self.attached_window = ctk.CTkToplevel(master=self, width=20, height=10, fg_color='black')
+            self.attached_window = ctk.CTkToplevel(master=self, width=20, height=10, fg_color=settings.MENU_BG)
             self.attached_window.overrideredirect(True)  # Remove title bar
             self.attached_window.wm_attributes("-topmost", True)  # Keep on top
 
             frame = ctk.CTkFrame(self.attached_window, fg_color='transparent')
             frame.pack(side='top')
-
             ctk.CTkLabel(frame, image=ctk.CTkImage(Image.open(settings.title_ico)), text='').pack(side='left')
             ctk.CTkLabel(frame, text=settings.about['title']).pack(side='left', padx=5)
+
             ctk.CTkLabel(self.attached_window, text=f"{'Developer:'} {settings.about['developer']}").pack(anchor='w', padx=2)
             ctk.CTkLabel(self.attached_window, text=f"{'Version:'} {settings.about['version']}").pack(anchor='w', padx=2)
             ctk.CTkLabel(self.attached_window, text=f"{'Released:'} {settings.about['released']}").pack(anchor='w', padx=2)
             ctk.CTkLabel(self.attached_window, text=f"{'License:'} {settings.about['license']}").pack(anchor='w', padx=2)
             ctk.CTkLabel(self.attached_window, text=f"{'Copyright:'} {settings.about['copyright']}").pack(anchor='w', padx=2)
-
 
             # Calculate attached window position
             x = self.winfo_rootx() + self.winfo_width()

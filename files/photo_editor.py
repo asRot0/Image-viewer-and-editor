@@ -15,7 +15,7 @@ class App(ctk.CTk):
         # self.attributes('-topmost', True)
         # self.attributes('-fullscreen', True)
         self.geometry('1000x600')
-        self.title('Photo Editor')
+        self.title(settings.about['title'])
         self.iconbitmap(settings.title_ico)
         self.minsize(800, 500)
 
