@@ -105,20 +105,21 @@ class ClickAttachedWindowButton(ctk.CTkButton):
     def on_click(self):
         if not self.attached_window or not self.attached_window.winfo_exists():
             # Create a new window
-            self.attached_window = ctk.CTkToplevel(master=self, width=20, height=10)
+            self.attached_window = ctk.CTkToplevel(master=self, width=20, height=10, fg_color=settings.BUTTON_COLOR)
             self.attached_window.overrideredirect(True)  # Remove title bar
             self.attached_window.wm_attributes("-topmost", True)  # Keep on top
 
             # Create content within the window
             for idx, content_text in enumerate(self.window_content, start=1):
-                ctk.CTkButton(self.attached_window, text=content_text, command=self.operation(idx)).pack(pady=2)
+                ctk.CTkButton(self.attached_window, text=content_text, command=self.operation(idx),
+                              fg_color='transparent', hover_color=settings.BLUE_BG).pack(pady=2)
 
             # Calculate attached window position
             x = self.winfo_rootx() + self.winfo_width()
             y = self.winfo_rooty()
 
             # Set geometry and show the window
-            self.attached_window.geometry(f"+{x}+{y}")
+            self.attached_window.geometry(f"+{x+8}+{y}")
             self.attached_window.deiconify()  # Ensure it's visible
         else:
             self.attached_window.destroy()
@@ -127,7 +128,7 @@ class ClickAttachedWindowButton(ctk.CTkButton):
         def inner_operation():
             if idx == 1:
                 print('Wallpaper')
-                # print(self.image_path)
+                print(settings.image_info['image_path'])
             elif idx == 2:
                 print('Lockscreen')
                 # print(self.image_path)
