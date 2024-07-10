@@ -18,6 +18,7 @@ info_image = '../pic/info.png'
 info_enter_image = '../pic/info1.png'
 dots_image = '../pic/dots.png'
 dots_enter_image = '../pic/dots1.png'
+dinosaur_image = '../pic/dinosaur.png'
 
 # values
 ROTATE_DEFAULT = 0
