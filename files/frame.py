@@ -113,6 +113,7 @@ class Frame(ctk.CTkFrame):
 
     def set_as(self):
         if self.images:
+            settings.image_info['image_path'] = self.images[self.image_index]
             self.button4.on_click()
         else:
             x = self.winfo_rootx() + self.winfo_width()
@@ -254,7 +255,7 @@ class Frame(ctk.CTkFrame):
             self.image_show(True)
         else:
             self.canvas_frame.grid(row=0, column=1, columnspan=2, rowspan=2, sticky='nsew', padx=1, pady=2)
-            self.image = Image.open('../pic/dinosaur2.png')
+            self.image = Image.open(settings.dinosaur_image)
             self.image_show(False)
 
     def place_image(self):
