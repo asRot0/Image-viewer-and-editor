@@ -40,7 +40,7 @@ class ImageOutput(ctk.CTkCanvas):
 class CloseOutput(ctk.CTkButton):
     def __init__(self, parent, close_func):
         super().__init__(master=parent, command=close_func, text='', text_color=settings.WHITE,
-                         fg_color='transparent', width=40, height=40, corner_radius=0, hover=False,
+                         fg_color='transparent', width=20, height=20, corner_radius=0, hover=False,
                          image=ctk.CTkImage(dark_image=Image.open(settings.close_image)))
 
         self.place(relx=0.99, rely=0.02, anchor='ne')
