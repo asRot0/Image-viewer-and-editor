@@ -53,19 +53,19 @@ DROPDOWN_MAIN_COLOR = '#444'
 DROPDOWN_HOVER_COLOR = '#333'
 DROPDOWN_MENU_COLOR = '#666'
 
-# imaage info
-
+# image info
 image_info = {
     'image_path': '',
     'image_size': ''
 
 }
 
+# about
 about = {
     'title': 'PhotoFly',
     'developer': 'Asif Ahmed (asRot0)',
     'version': '1.0.1',
-    'released': '2024',
+    'released': '2030',
     'license': 'MIT license',
     'copyright': '© 2024 asRot0'
 
