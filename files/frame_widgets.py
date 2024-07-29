@@ -3,6 +3,7 @@ import settings
 from PIL import Image
 import os
 from datetime import datetime
+from CTkToolTip import CTkToolTip
 
 
 class AlertMsg(ctk.CTkToplevel):
@@ -36,6 +37,8 @@ class AboutInfo(ctk.CTkButton):
 
         self.attached_window = None  # Flag to track window existence
 
+        CTkToolTip(self, delay=1, message='About info')
+
         self.bind('<Enter>', self.onEnter)
         self.bind('<Leave>', self.onLeave)
 
@@ -59,18 +62,18 @@ class AboutInfo(ctk.CTkButton):
             ctk.CTkLabel(frame, image=ctk.CTkImage(Image.open(settings.title_ico)), text='').pack(side='left')
             ctk.CTkLabel(frame, text=settings.about['title']).pack(side='left', padx=5)
 
-            ctk.CTkLabel(self.attached_window, text=f"{'Developer:'} {settings.about['developer']}").pack(anchor='w', padx=2)
-            ctk.CTkLabel(self.attached_window, text=f"{'Version:'} {settings.about['version']}").pack(anchor='w', padx=2)
-            ctk.CTkLabel(self.attached_window, text=f"{'Released:'} {settings.about['released']}").pack(anchor='w', padx=2)
-            ctk.CTkLabel(self.attached_window, text=f"{'License:'} {settings.about['license']}").pack(anchor='w', padx=2)
-            ctk.CTkLabel(self.attached_window, text=f"{'Copyright:'} {settings.about['copyright']}").pack(anchor='w', padx=2)
+            ctk.CTkLabel(self.attached_window, text=f"{'Developer:'} {settings.about['developer']}", height=20).pack(anchor='w', padx=2)
+            ctk.CTkLabel(self.attached_window, text=f"{'Version:'} {settings.about['version']}", height=20).pack(anchor='w', padx=2)
+            ctk.CTkLabel(self.attached_window, text=f"{'Released:'} {settings.about['released']}", height=20).pack(anchor='w', padx=2)
+            ctk.CTkLabel(self.attached_window, text=f"{'License:'} {settings.about['license']}", height=20).pack(anchor='w', padx=2)
+            ctk.CTkLabel(self.attached_window, text=f"{'Copyright:'} {settings.about['copyright']}", height=20).pack(anchor='w', padx=2)
 
             # Calculate attached window position
             x = self.winfo_rootx() + self.winfo_width()
             y = self.winfo_rooty()
 
             # Set geometry and show the window
-            self.attached_window.geometry(f"+{x+10}+{y-150}")
+            self.attached_window.geometry(f"+{x+10}+{y-100}")
             self.attached_window.deiconify()  # Ensure it's visible
         else:
             self.attached_window.destroy()
