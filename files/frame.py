@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from tkinter import filedialog
 from frame_widgets import ImageFolder, EditImage, ImageInfo, ImageRotate, LeftImageButton, RightImageButton,\
-    SlidePanel, ClickAttachedWindowButton, AboutInfo, AlertMsg
+    SlidePanel, ClickAttachedWindowButton, AboutInfo, AlertMsg, TooltipHandler
 import settings
 import os
 from PIL import Image, ImageTk
@@ -50,22 +50,27 @@ class Frame(ctk.CTkFrame):
         # button1 = ctk.CTkButton(inner_frame, text='open', width=10, command=self.open_image)
         button1 = ImageFolder(inner_frame, self.open_image)
         button1.pack(padx=3, pady=10)
+        self.tooltip_folder = TooltipHandler(button1, message='Folder')
 
         # button2 = ctk.CTkButton(inner_frame, text='Edit', width=10, command=self.edit_flag)
         button2 = EditImage(inner_frame, self.edit_flag)
         button2.pack(padx=3, pady=10)
+        self.tooltip_edit = TooltipHandler(button2, message='Edit image')
 
         # button3 = ctk.CTkButton(inner_frame, text='Button 3', width=10)
         button3 = ImageRotate(inner_frame, self.image_rotate)
         button3.pack(padx=3, pady=10)
+        self.tooltip_rotate = TooltipHandler(button3, message='Rotate')
 
         # button4 = ctk.CTkButton(inner_frame,  text='set as', width=10, command=self.image_setas)
         self.button4 = ClickAttachedWindowButton(inner_frame, self.set_as, self.window_content)
         self.button4.pack(padx=3, pady=10)
+        self.tooltip_set = TooltipHandler(self.button4, message='Set as')
 
         # button5 = ctk.CTkButton(inner_frame, text='Button 5', width=10, command=self.image_info)
         button5 = ImageInfo(inner_frame, self.image_info)
         button5.pack(padx=3, pady=10)
+        self.tooltip_info = TooltipHandler(button5, message='File info')
 
         # about_button = ctk.CTkButton(left_vertical_frame, text='. . .', width=5)
         about_button = AboutInfo(left_vertical_frame)
@@ -102,6 +107,7 @@ class Frame(ctk.CTkFrame):
         # self.left_vertical_frame.pack(expand=True)
 
     def image_info(self):
+        self.tooltip_info.hide_permanently()
         if self.images:
             settings.image_info['image_path'] = self.images[self.image_index]
             self.animated_panel.animate()
@@ -112,6 +118,7 @@ class Frame(ctk.CTkFrame):
             AlertMsg(self.canvas_frame, x, y)
 
     def set_as(self):
+        self.tooltip_set.hide_permanently()
         if self.images:
             settings.image_info['image_path'] = self.images[self.image_index]
             self.button4.on_click()
@@ -121,6 +128,7 @@ class Frame(ctk.CTkFrame):
             AlertMsg(self.canvas_frame, x, y)
 
     def image_rotate(self):
+        self.tooltip_rotate.hide_permanently()
         if self.images:
             # Rotate the image by 90 degrees clockwise
             self.image = self.image.rotate(-90, expand=True)  # Use negative angle for clockwise rotation
@@ -134,6 +142,7 @@ class Frame(ctk.CTkFrame):
             AlertMsg(self.canvas_frame, x, y)
 
     def open_image(self):
+        self.tooltip_folder.hide_permanently()
         # Show the navigation widgets after opening the image folder
         self.show_navigation_widgets()
 
@@ -163,6 +172,7 @@ class Frame(ctk.CTkFrame):
         # self.show_navigation_widgets()
 
     def edit_flag(self):
+        self.tooltip_edit.hide_permanently()
         if self.images:
             self.flag_fun(True)
         else:
