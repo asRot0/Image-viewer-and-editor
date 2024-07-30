@@ -6,6 +6,35 @@ from datetime import datetime
 from CTkToolTip import CTkToolTip
 
 
+class TooltipHandler:
+    def __init__(self, widget, message, hide_after_ms=2000):
+        self.widget = widget
+        self.message = message
+        self.hide_after_ms = hide_after_ms
+        self.tooltip = CTkToolTip(widget, message=message, follow=False)
+        self.tooltip_permanently_hidden = False
+
+        # Bind the hover events to the widget
+        self.widget.bind("<Enter>", self.on_enter)
+        self.widget.bind("<Leave>", self.on_leave)
+
+    def hide_tooltip(self):
+        if not self.tooltip_permanently_hidden:
+            self.tooltip.hide()
+
+    def on_enter(self, event):
+        if not self.tooltip_permanently_hidden:
+            self.tooltip.show()
+            self.widget.after(self.hide_after_ms, self.hide_tooltip)  # hide the tooltip after specified ms
+
+    def on_leave(self, event):
+        self.tooltip.hide()
+
+    def hide_permanently(self):
+        self.tooltip.hide()
+        self.tooltip_permanently_hidden = True  # Set flag to hide tooltip permanently
+
+
 class AlertMsg(ctk.CTkToplevel):
     def __init__(self, parent, x, y):
         super().__init__(master=parent, width=100, height=50, fg_color=settings.ALERT)
