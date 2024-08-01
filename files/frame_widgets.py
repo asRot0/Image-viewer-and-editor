@@ -11,7 +11,7 @@ class TooltipHandler:
         self.widget = widget
         self.message = message
         self.hide_after_ms = hide_after_ms
-        self.tooltip = CTkToolTip(widget, message=message, follow=False)
+        self.tooltip = CTkToolTip(widget, message=message, follow=False, bg_color=settings.MENU_BG, alpha=0.7)
         self.tooltip_permanently_hidden = False
 
         # Bind the hover events to the widget
@@ -65,8 +65,6 @@ class AboutInfo(ctk.CTkButton):
                          image=ctk.CTkImage(dark_image=Image.open(settings.dots_image)))
 
         self.attached_window = None  # Flag to track window existence
-
-        CTkToolTip(self, delay=1, message='About info')
 
         self.bind('<Enter>', self.onEnter)
         self.bind('<Leave>', self.onLeave)
@@ -142,7 +140,7 @@ class ClickAttachedWindowButton(ctk.CTkButton):
             self.attached_window.wm_attributes("-topmost", True)  # Keep on top
 
             # Create content within the window
-            for idx, content_text in enumerate(self.window_content, start=1):
+            for idx, content_text in enumerate(self.window_content):
                 ctk.CTkButton(self.attached_window, text=content_text, command=self.operation(idx),
                               fg_color='transparent', hover_color=settings.BLUE_BG).pack(pady=2)
 
@@ -158,12 +156,11 @@ class ClickAttachedWindowButton(ctk.CTkButton):
 
     def operation(self, idx):
         def inner_operation():
-            if idx == 1:
+            if idx:
+                print('Lockscreen')
+            else:
                 print('Wallpaper')
                 print(settings.image_info['image_path'])
-            elif idx == 2:
-                print('Lockscreen')
-                # print(self.image_path)
 
         return inner_operation
 
