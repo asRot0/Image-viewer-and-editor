@@ -153,7 +153,6 @@ class Frame(ctk.CTkFrame):
             # Get a list of image files in the selected directory
             image_files = [file for file in os.listdir(directory) if
                            file.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.jfif', '.bmp', '.tiff', '.ico'))]
-
             if image_files:
                 # Load and store the images
                 self.images.clear()
@@ -175,6 +174,7 @@ class Frame(ctk.CTkFrame):
         self.tooltip_edit.hide_permanently()
         if self.images:
             self.flag_fun(True)
+
         else:
             x = self.winfo_rootx() + self.winfo_width()
             y = self.winfo_rooty() + self.winfo_height()
