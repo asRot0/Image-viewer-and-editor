@@ -61,7 +61,7 @@ class App(ctk.CTk):
         self.image_index = left_img
 
     def right_image(self, right_img):
-        self. image_index = right_img
+        self.image_index = right_img
 
     def init_parameters(self):
         self.pos_vars = {
