@@ -138,6 +138,7 @@ class ClickAttachedWindowButton(ctk.CTkButton):
             self.attached_window = ctk.CTkToplevel(master=self, width=20, height=10, fg_color=settings.BUTTON_COLOR)
             self.attached_window.overrideredirect(True)  # Remove title bar
             self.attached_window.wm_attributes("-topmost", True)  # Keep on top
+            self.attached_window.wm_attributes('-alpha', 0.6)
 
             # Create content within the window
             for idx, content_text in enumerate(self.window_content):
