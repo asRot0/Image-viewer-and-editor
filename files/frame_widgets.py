@@ -43,7 +43,7 @@ class AlertMsg(ctk.CTkToplevel):
         self.y = y
 
         self.overrideredirect(True)
-        self.wm_attributes("-topmost", True)
+        self.wm_attributes('-topmost', True)
 
         ctk.CTkLabel(self, text='at first open your image folder').pack(padx=2, pady=2)
 
@@ -80,9 +80,9 @@ class AboutInfo(ctk.CTkButton):
     def on_click(self):
         if not self.attached_window or not self.attached_window.winfo_exists():
             # Create a new window
-            self.attached_window = ctk.CTkToplevel(master=self, width=20, height=10, fg_color=settings.DARK_GRAY)
+            self.attached_window = ctk.CTkToplevel(master=self, width=20, height=10, fg_color=settings.BUTTON_COLOR)
             self.attached_window.overrideredirect(True)  # Remove title bar
-            self.attached_window.wm_attributes("-topmost", True)  # Keep on top
+            self.attached_window.wm_attributes('-topmost', True)  # Keep on top
             self.attached_window.wm_attributes('-alpha', 0.6)
 
             frame = ctk.CTkFrame(self.attached_window, fg_color='transparent')
@@ -138,7 +138,7 @@ class ClickAttachedWindowButton(ctk.CTkButton):
             # Create a new window
             self.attached_window = ctk.CTkToplevel(master=self, width=20, height=10, fg_color=settings.BUTTON_COLOR)
             self.attached_window.overrideredirect(True)  # Remove title bar
-            self.attached_window.wm_attributes("-topmost", True)  # Keep on top
+            self.attached_window.wm_attributes('-topmost', True)  # Keep on top
             self.attached_window.wm_attributes('-alpha', 0.6)
 
             # Create content within the window
