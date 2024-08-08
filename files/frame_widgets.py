@@ -80,9 +80,10 @@ class AboutInfo(ctk.CTkButton):
     def on_click(self):
         if not self.attached_window or not self.attached_window.winfo_exists():
             # Create a new window
-            self.attached_window = ctk.CTkToplevel(master=self, width=20, height=10, fg_color=settings.MENU_BG)
+            self.attached_window = ctk.CTkToplevel(master=self, width=20, height=10, fg_color=settings.DARK_GRAY)
             self.attached_window.overrideredirect(True)  # Remove title bar
             self.attached_window.wm_attributes("-topmost", True)  # Keep on top
+            self.attached_window.wm_attributes('-alpha', 0.6)
 
             frame = ctk.CTkFrame(self.attached_window, fg_color='transparent')
             frame.pack(side='top')
