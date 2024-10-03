@@ -2,6 +2,7 @@ import customtkinter as ctk
 import settings
 from PIL import Image
 import os
+import ctypes
 from datetime import datetime
 from CTkToolTip import CTkToolTip
 
@@ -120,6 +121,7 @@ class ClickAttachedWindowButton(ctk.CTkButton):
 
         self.window_content = window_content
         self.attached_window = None  # Flag to track window existence
+        self.safe = False  # Flag for safe guard
 
         self.bind('<Enter>', self.onEnter)
         self.bind('<Leave>', self.onLeave)
@@ -158,13 +160,43 @@ class ClickAttachedWindowButton(ctk.CTkButton):
 
     def operation(self, idx):
         def inner_operation():
-            if idx:
-                print('Lockscreen')
-            else:
-                print('Wallpaper')
-                print(settings.image_info['image_path'])
+            image_path = settings.image_info['image_path']
+
+            if idx == 0:  # Wallpaper
+                self.set_wallpaper(image_path)
+            elif idx == 1:  # Lock screen
+                self.set_lock_screen(image_path)
 
         return inner_operation
+
+    def set_wallpaper(self, image_path):
+        """Set the wallpaper and handle errors."""
+        try:
+            # Check if the path is valid
+            if not os.path.exists(image_path):
+                raise FileNotFoundError(f"The image path {image_path} does not exist.")
+
+            # Set the wallpaper (Windows-specific)
+            ctypes.windll.user32.SystemParametersInfoW(20, 0, image_path, 0)
+            print(f"Wallpaper set to {image_path}")
+        except Exception as e:
+            print(f"Failed to set wallpaper: {e}")
+
+    def set_lock_screen(self, image_path):
+        """Set the lock screen and handle errors."""
+        try:
+            # Check if the path is valid
+            if not os.path.exists(image_path):
+                raise FileNotFoundError(f"The image path {image_path} does not exist.")
+
+            # Windows doesn't allow direct lock screen change via API, but you can try this method
+            # This method only works for certain cases
+            key = r'HKCU\Software\Microsoft\Windows\CurrentVersion\Lock Screen\Creative'
+            command = f'reg add "{key}" /v LandscapeImagePath /t REG_SZ /d "{image_path}" /f'
+            os.system(command)
+            print(f"Lock screen set to {image_path}")
+        except Exception as e:
+            print(f"Failed to set lock screen: {e}")
 
 
 class ImageFolder(ctk.CTkButton):
