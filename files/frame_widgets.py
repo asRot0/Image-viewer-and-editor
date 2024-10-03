@@ -121,7 +121,7 @@ class ClickAttachedWindowButton(ctk.CTkButton):
 
         self.window_content = window_content
         self.attached_window = None  # Flag to track window existence
-        self.safe = False  # Flag for safe guard
+        self.safe_flag = False  # Flag for safe guard
 
         self.bind('<Enter>', self.onEnter)
         self.bind('<Leave>', self.onLeave)
@@ -145,7 +145,7 @@ class ClickAttachedWindowButton(ctk.CTkButton):
 
             # Create content within the window
             for idx, content_text in enumerate(self.window_content):
-                ctk.CTkButton(self.attached_window, text=content_text, command=self.operation(idx),
+                ctk.CTkButton(self.attached_window, text=content_text, command=self.operation(idx, self.safe_flag),
                               fg_color='transparent', hover_color=settings.BLUE_BG).pack(pady=2)
 
             # Calculate attached window position
@@ -158,14 +158,19 @@ class ClickAttachedWindowButton(ctk.CTkButton):
         else:
             self.attached_window.destroy()
 
-    def operation(self, idx):
+    def operation(self, idx, safe_flag):
         def inner_operation():
             image_path = settings.image_info['image_path']
+            print(image_path)
 
             if idx == 0:  # Wallpaper
-                self.set_wallpaper(image_path)
+                print('wallpaper')
+                if safe_flag:
+                    self.set_wallpaper(image_path)
             elif idx == 1:  # Lock screen
-                self.set_lock_screen(image_path)
+                print('lock screen')
+                if safe_flag:
+                    self.set_lock_screen(image_path)
 
         return inner_operation
 
