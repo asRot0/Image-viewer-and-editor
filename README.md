@@ -147,5 +147,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 For any questions or inquiries, feel free to contact.
-- *Name*: Asif Ahmed (asRot0)
+- *Name*: Asif Ahmed (<span style="color: #FF6347;">asRot0</span>)
 - *LinkedIn*: [in/asifahm9090](https://www.linkedin.com/in/asifahm9090/)
