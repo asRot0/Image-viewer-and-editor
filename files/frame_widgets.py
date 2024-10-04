@@ -1,5 +1,5 @@
 import customtkinter as ctk
-import settings
+from . import settings
 from PIL import Image
 import os
 import ctypes
@@ -354,7 +354,7 @@ class SlidePanel(ctk.CTkFrame):
         # Close button
         ctk.CTkButton(self, text='', width=10, height=10, command=self.animate,
                       fg_color='transparent', hover_color=settings.DARK_GRAY,
-                      image=ctk.CTkImage(dark_image=Image.open('../pic/close.png'))).place(relx=0.89, rely=0.005)
+                      image=ctk.CTkImage(dark_image=Image.open(settings.close_dark))).place(relx=0.89, rely=0.005)
 
         # Image info
         self.image_info_label = ctk.CTkLabel(self, text='Image Info')

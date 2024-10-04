@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import filedialog
-import settings
+from . import settings
 
 
 class Panel(ctk.CTkFrame):

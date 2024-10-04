@@ -1,10 +1,10 @@
 import customtkinter as ctk
 from CTkMessagebox import CTkMessagebox
-from image_widgets import FirstFrame, ImageImport, ImageOutput, CloseOutput
-from menu import Menu
+from .image_widgets import FirstFrame, ImageImport, ImageOutput, CloseOutput
+from .menu import Menu
 from PIL import Image, ImageTk, ImageOps, ImageEnhance, ImageFilter
-import settings
-from frame import Frame
+from .frame import Frame
+from . import settings
 
 
 class App(ctk.CTk):
@@ -195,7 +195,3 @@ class App(ctk.CTk):
         except ValueError:
             CTkMessagebox(title="Error", message="Something went wrong!!!", icon="cancel", button_width=10,
                           button_color=settings.BUTTON_BG, button_hover_color=settings.BUTTON_BG_HOVER)
-
-
-if __name__ == '__main__':
-    App()

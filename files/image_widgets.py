@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import filedialog
-import settings
+from . import settings
 from PIL import Image
 
 
@@ -31,7 +31,7 @@ class ImageImport(ctk.CTkFrame):
 
 class ImageOutput(ctk.CTkCanvas):
     def __init__(self, parent, resize_image):
-        super().__init__(master=parent, background=settings.BACKGROUND_COLOR,  relief='ridge',
+        super().__init__(master=parent, background=settings.BACKGROUND_COLOR, relief='ridge',
                          bd=0, highlightthickness=0)
         self.grid(row=0, column=1, sticky='nsew', padx=5, pady=5)
         self.bind('<Configure>', resize_image)

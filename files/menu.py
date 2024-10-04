@@ -1,7 +1,7 @@
 import customtkinter as ctk
-from panels import SliderPanel, SegmentedPanel, SwitchPanel, FileNamePanel, FilePathPanel,\
-    DropDownPanel, RevertButton, SaveButton
-import settings
+from .panels import SliderPanel, SegmentedPanel, SwitchPanel, FileNamePanel, FilePathPanel, DropDownPanel,\
+    RevertButton, SaveButton
+from . import settings
 
 
 class Menu(ctk.CTkTabview):

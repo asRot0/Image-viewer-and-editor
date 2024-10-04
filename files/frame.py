@@ -1,8 +1,8 @@
 import customtkinter as ctk
 from tkinter import filedialog
-from frame_widgets import ImageFolder, EditImage, ImageInfo, ImageRotate, LeftImageButton, RightImageButton,\
+from .frame_widgets import ImageFolder, EditImage, ImageInfo, ImageRotate, LeftImageButton, RightImageButton,\
     SlidePanel, ClickAttachedWindowButton, AboutInfo, AlertMsg, TooltipHandler
-import settings
+from . import settings
 import os
 from PIL import Image, ImageTk
 
