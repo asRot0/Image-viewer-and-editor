@@ -45,18 +45,34 @@ To set up the Image Viewer and Editor on your local machine, follow these steps:
 
 ## Usage
 
-Usage
-Launching the Application:
+### Launching the Application
+After running `run.py`, the main interface will appear.
 
-After running run.py, the main interface will appear.
-Opening an Image:
+### Opening an Image
+Use the **File Path Panel** to select an image from your file system. Click the button to open the file explorer and choose your desired image.
 
-Use the File Path Panel to select an image from your file system. Click the button to open the file explorer and choose your desired image.
-Editing the Image:
+### Editing the Image
+- **Position Tab**: Adjust the rotation and zoom level using sliders. You can also flip the image vertically or horizontally.
+- **Color Tab**: Modify properties like brightness, contrast, and vibrance. You can also convert the image to grayscale or invert its colors.
+- **Effects Tab**: Apply various effects to the image, including blur and contour.
 
-Position Tab: Adjust the rotation and zoom level using sliders. You can also flip the image vertically or horizontally.
-Color Tab: Modify properties like brightness, contrast, and vibrance. You can also convert the image to grayscale or invert its colors.
-Effects Tab: Apply various effects to the image, including blur and contour.
-Exporting the Edited Image:
+### Exporting the Edited Image
+- Use the `Export` section to specify a name and choose the format (JPG or PNG). Click the save button to export your edited image.
 
-Use the Export section to specify a name and choose the format (JPG or PNG). Click the save button to export your edited image.
+## Code Structure
+The project is organized as follows:
+
+```lua
+Image-viewer-and-editor/
+|-- assets/                 # Contains assets like images and icons
+|-- files/                  # Main application files
+|   |-- __init__.py
+|   |-- frame.py            # Frame structure and layout
+|   |-- frame_widgets.py    # Widgets for frames
+|   |-- image_widgets.py    # Image handling widgets
+|   |-- menu.py             # Main menu and tabs
+|   |-- panels.py           # UI panels and components
+|   |-- photo_editor.py     # Main application logic
+|   |-- settings.py         # Configuration settings
+|-- run.py                  # Entry point for the application
+```
