@@ -9,26 +9,26 @@ assets_dir = BASE_DIR / 'assets'
 
 # Define the paths relative to the assets directory
 title_ico = assets_dir / 'image.ico'
-left_image = os.path.join(BASE_DIR, '../assets/left.png')
-left_enter_image = os.path.join(BASE_DIR, '../assets/left-arrow.png')
-right_image = os.path.join(BASE_DIR, '../assets/right.png')
-right_enter_image = os.path.join(BASE_DIR, '../assets/right-arrow.png')
-close_dark = os.path.join(BASE_DIR, '../assets/close.png')
-close_image = os.path.join(BASE_DIR, '../assets/x.png')
-close_enter_image = os.path.join(BASE_DIR, '../assets/cross.png')
-folder_image = os.path.join(BASE_DIR, '../assets/folder.png')
-folder_enter_image = os.path.join(BASE_DIR, '../assets/folder1.png')
-editing_image = os.path.join(BASE_DIR, '../assets/image-editing.png')
-editing_enter_image = os.path.join(BASE_DIR, '../assets/image-editing1.png')
-rotate_image = os.path.join(BASE_DIR, '../assets/rotation.png')
-rotate_enter_image = os.path.join(BASE_DIR, '../assets/rotation1.png')
-wallpaper_image = os.path.join(BASE_DIR, '../assets/wallpaper.png')
-wallpaper_enter_image = os.path.join(BASE_DIR, '../assets/wallpaper1.png')
-info_image = os.path.join(BASE_DIR, '../assets/info.png')
-info_enter_image = os.path.join(BASE_DIR, '../assets/info1.png')
-dots_image = os.path.join(BASE_DIR, '../assets/dots.png')
-dots_enter_image = os.path.join(BASE_DIR, '../assets/dots1.png')
-dinosaur_image = os.path.join(BASE_DIR, '../assets/dinosaur.png')
+left_image = assets_dir / 'left.png'
+left_enter_image = assets_dir / 'left-arrow.png'
+right_image = assets_dir / 'right.png'
+right_enter_image = assets_dir / 'right-arrow.png'
+close_dark = assets_dir / 'close.png'
+close_image = assets_dir / 'x.png'
+close_enter_image = assets_dir / 'cross.png'
+folder_image = assets_dir / 'folder.png'
+folder_enter_image = assets_dir / 'folder1.png'
+editing_image = assets_dir / 'image-editing.png'
+editing_enter_image = assets_dir / 'image-editing1.png'
+rotate_image = assets_dir / 'rotation.png'
+rotate_enter_image = assets_dir / 'rotation1.png'
+wallpaper_image = assets_dir / 'wallpaper.png'
+wallpaper_enter_image = assets_dir / 'wallpaper1.png'
+info_image = assets_dir / 'info.png'
+info_enter_image = assets_dir / 'info1.png'
+dots_image = assets_dir / 'dots.png'
+dots_enter_image = assets_dir / 'dots1.png'
+dinosaur_image = assets_dir / 'dinosaur.png'
 
 
 # values
