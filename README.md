@@ -126,3 +126,26 @@ Image-viewer-and-editor/
 - **File Format**: Choose between JPG and PNG formats using checkboxes.
 - **File Path**: Select the destination folder for saving the edited image.
 - **Save Button**: Click to export the edited image with the specified parameters.
+
+## Screenshots
+
+#### Main Interface
+
+#### Position Controls
+
+#### Color Adjustments
+
+#### Effects Panel
+
+#### Export Options
+
+## Contributing
+Contributions are welcome! If you have suggestions for improvements or new features, please create an issue or submit a pull request.
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+For any questions or inquiries, feel free to contact.
+- *Name*: Asif Ahmed (asRot0)
+- *LinkedIn*: [in/asifahm9090](https://www.linkedin.com/in/asifahm9090/)
