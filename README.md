@@ -130,14 +130,8 @@ Image-viewer-and-editor/
 ## Screenshots
 
 #### Main Interface
-
-#### Position Controls
-
-#### Color Adjustments
-
-#### Effects Panel
-
-#### Export Options
+![screenshots](screenshots/screenshot%20(1).png)
+[All screenshots](screenshots/SCREENSHOTS.md)
 
 ## Contributing
 Contributions are welcome! If you have suggestions for improvements or new features, please create an issue or submit a pull request.
