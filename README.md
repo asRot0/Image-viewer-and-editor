@@ -42,7 +42,22 @@ To set up the Image Viewer and Editor on your local machine, follow these steps:
 4. **Run the Application: Start the application using the command**
     ```bash
    python run.py
+#
+To run this project, you need to have the following dependencies installed:
 
+- customtkinter==5.2.2
+- Pillow==10.2.0
+- CTkToolTip==0.8
+- CTkMessagebox==2.5
+
+You can install them using `pip`. Open your terminal or command prompt and run the following commands:
+
+```bash
+pip install customtkinter==5.2.2
+pip install Pillow==10.2.0
+pip install CTkToolTip==0.8
+pip install CTkMessagebox==2.5
+```
 ## Usage
 
 ### Launching the Application
