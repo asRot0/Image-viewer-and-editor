@@ -146,7 +146,7 @@ Image-viewer-and-editor/
 
 #### Main Interface
 ![screenshots](screenshots/screenshot%20(1).png)
-[All screenshots](screenshots/SCREENSHOTS.md)
+[All screenshots](screenshots/README.md)
 
 ## Contributing
 Contributions are welcome! If you have suggestions for improvements or new features, please create an issue or submit a pull request.
