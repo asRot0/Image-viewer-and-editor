@@ -1,8 +1,8 @@
-# Image Viewer and Editor (PhotoFly)
+# Image Viewer and Editor *(PhotoFly)*
 
 ![Project Logo](./assets/image.png) <!-- Optional: Add an image logo -->
 
-Welcome to the **Image Viewer and Editor**! This application is designed to provide users with a powerful yet user-friendly interface for viewing and editing images. Built using Python's `customtkinter`, it offers a variety of functionalities, including rotating images, adjusting colors, applying effects, and exporting in multiple formats.
+Welcome to the *`Image Viewer and Editor`!* This application is designed to provide users with a powerful yet user-friendly interface for viewing and editing images. Built using Python's `customtkinter`, it offers a variety of functionalities, including rotating images, adjusting colors, applying effects, and exporting in multiple formats.
 
 ## Table of Contents
 
@@ -15,17 +15,17 @@ Welcome to the **Image Viewer and Editor**! This application is designed to prov
 - [Screenshots](#screenshots)
 - [Known Issues](#Known-Issues-🐛)
 - [Contributing](#contributing)
-- [License](#license)
+- [License](#license-🐛)
 - [Contact](#contact)
 
 ## Features
 
-- **Intuitive User Interface**: Designed for ease of use, even for beginners.
-- **Image Manipulation**: Rotate, zoom, flip, and apply various color adjustments and effects.
-- **Multiple Export Formats**: Save your edited images in JPG or PNG formats.
-- **Real-Time Preview**: See changes as you make them with real-time updates.
-- **Customization**: Adjust sliders and switches to fine-tune your images.
-- **About Section**: View information about the application, its version, and the developer.
+- **Intuitive User Interface**: Designed for ease of use, even for beginners. 🎮
+- **Image Manipulation**: Rotate, zoom, flip, and apply various color adjustments and effects. 🔄
+- **Multiple Export Formats**: Save your edited images in JPG or PNG formats. 💾
+- **Real-Time Preview**: See changes as you make them with real-time updates. 👁️
+- **Customization**: Adjust sliders and switches to fine-tune your images. ⚙️
+- **About Section**: View information about the application, its version, and the developer.ℹ️
 
 ## Installation
 
@@ -65,15 +65,15 @@ pip install CTkMessagebox==2.5
 After running `run.py`, the main interface will appear.
 
 ### Opening an Image
-Use the **File Path Panel** to select an image from your file system. Click the button to open the file explorer and choose your desired image.
+Use the **File Path Panel** to select your image file 📂 from your file system. Click the button to open the file explorer and choose your desired image.
 
 ### Editing the Image
-- **Position Tab**: Adjust the rotation and zoom level using sliders. You can also flip the image vertically or horizontally.
-- **Color Tab**: Modify properties like brightness, contrast, and vibrance. You can also convert the image to grayscale or invert its colors.
-- **Effects Tab**: Apply various effects to the image, including blur and contour.
+- **Position Tab**: Adjust the rotation and zoom level using sliders. You can also flip the image vertically or horizontally. 🔄
+- **Color Tab**: Modify properties like brightness, contrast, and vibrance. You can also convert the image to grayscale or invert its colors. 🌈
+- **Effects Tab**: Apply various effects to the image, including blur and contour. ✨
 
 ### Exporting the Edited Image
-- Use the `Export` section to specify a name and choose the format (JPG or PNG). Click the save button to export your edited image.
+- Use the `Export` section to specify a name and choose the format (JPG or PNG). Click the save button to export your edited image. 💾
 
 ## Code Structure
 The project is organized as follows:
@@ -95,29 +95,29 @@ Image-viewer-and-editor/
 
 ## Key Files and Their Responsibilities
 
-- **run.py**: The main entry point of the application, responsible for launching the application.
+- **run.py**: The main entry point of the application, responsible for launching the application. 🚀
 
-- **settings.py**: Contains configuration settings, constants, and paths for assets used in the application.
+- **settings.py**: Contains configuration settings, constants, and paths for assets used in the application. ⚙️
 
-- **menu.py**: Implements the main menu layout and manages the navigation between different editing tabs.
+- **menu.py**: Implements the main menu layout and manages the navigation between different editing tabs. ✂️
 
-- **panels.py**: Contains various UI panels that house the editing controls and options for users.
+- **panels.py**: Contains various UI panels that house the editing controls and options for users. 🔧
 
-- **photo_editor.py**: This file contains the core logic for the image editing functionalities.
+- **photo_editor.py**: This file contains the core logic for the image editing functionalities. 🖼️
 
 ## Components Overview
 
 ### Main Components
 
 - **Menu**: The application is organized into tabs:
-  - **Position**: Adjust image rotation and zoom.
-  - **Color**: Modify brightness, contrast, and color settings.
-  - **Effects**: Apply effects like blur or contour.
-  - **Export**: Specify the file name and format for saving the image.
+  - **Position**: Adjust image rotation and zoom. 🔄
+  - **Color**: Modify brightness, contrast, and color settings. 🎨
+  - **Effects**: Apply effects like blur or contour. ✨
+  - **Export**: Specify the file name and format for saving the image. 🗂️
 
-- **Panels**: Each tab contains specific panels that group related controls, making it easy for users to navigate the functionalities.
+- **Panels**: Each tab contains specific panels that group related controls, making it easy for users to navigate the functionalities. 🧩
 
-- **Settings**: Centralized settings for asset paths and default values used throughout the application.
+- **Settings**: Centralized settings for asset paths and default values used throughout the application. ⚙️
 
 ## Detailed Functionality
 
@@ -162,12 +162,12 @@ P.S. I know about it 😜, but I thought I'd let you have some fun looking for i
 ---
 
 ## Contributing
-Contributions are welcome! If you have suggestions for improvements or new features, please create an issue or submit a pull request.
+Contributions are welcome! If you have suggestions for improvements or new features, please create an issue or submit a pull request. 💡
 
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+## License 🐛
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details. 📜
 
 ## Contact
 For any questions or inquiries, feel free to contact.
-- *Name*: Asif Ahmed (asRot0)
+- *Name*: Asif Ahmed *`(asRot0)`*
 - *LinkedIn*: [in/asifahm9090](https://www.linkedin.com/in/asifahm9090/)
