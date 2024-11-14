@@ -48,7 +48,7 @@ class AlertMsg(ctk.CTkToplevel):
 
         ctk.CTkLabel(self, text='first open your image folder').pack(padx=2, pady=2)
 
-        self.geometry(f"+{x-205}+{y-45}")
+        self.geometry(f"+{x-200}+{y-45}")
         self.deiconify()
 
         self.after(1000, lambda: self.destroy())
