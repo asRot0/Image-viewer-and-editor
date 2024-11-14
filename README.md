@@ -1,4 +1,4 @@
-# Image Viewer and Editor
+# Image Viewer and Editor (PhotoFly)
 
 ![Project Logo](./assets/image.png) <!-- Optional: Add an image logo -->
 
