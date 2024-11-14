@@ -123,26 +123,26 @@ Image-viewer-and-editor/
 ## 🔧 Detailed Functionality
 
 ### Position Frame
-- **Rotation**: Control the rotation of the image from 0 to 360 degrees using a slider.
-- **Zoom**: Adjust the zoom level from 0% to 200% using a slider.
-- **Invert**: Use a segmented button to flip the image in different orientations (None, X, Y, Both).
+- **Rotation** 🔄: Control the rotation of the image from 0 to 360 degrees using a slider.
+- **Zoom** 🔍: Adjust the zoom level from 0% to 200% using a slider.
+- **Invert** 🔃: Use a segmented button to flip the image in different orientations (None, X, Y, Both).
 
 ### Color Frame
-- **Brightness**: Adjust the brightness of the image with a slider (0 to 5).
-- **Grayscale**: Convert the image to black and white using a switch.
-- **Invert Colors**: Toggle color inversion using a switch.
-- **Vibrance**: Adjust the vibrance of the image with a slider (0 to 5).
+- **Brightness** ☀️: Adjust the brightness of the image with a slider (0 to 5).
+- **Grayscale** ⚫⚪: Convert the image to black and white using a switch.
+- **Invert Colors** 🔄: Toggle color inversion using a switch.
+- **Vibrance** 🌈: Adjust the vibrance of the image with a slider (0 to 5).
 
 ### Effects Frame
-- **DropDown Menu**: Select from various effects (None, Emboss, Find edges, etc.).
-- **Blur**: Apply a blur effect adjustable from 0 to 10.
-- **Contrast**: Adjust the contrast of the image from 0 to 10.
+- **DropDown Menu** 🎨: Select from various effects (None, Emboss, Find edges, etc.).
+- **Blur** 🌫️: Apply a blur effect adjustable from 0 to 10.
+- **Contrast** 🌓: Adjust the contrast of the image from 0 to 10.
 
 ### Export Frame
-- **File Name**: Input the desired file name for the exported image.
-- **File Format**: Choose between JPG and PNG formats using checkboxes.
-- **File Path**: Select the destination folder for saving the edited image.
-- **Save Button**: Click to export the edited image with the specified parameters.
+- **File Name** 📝: Input the desired file name for the exported image.
+- **File Format** 🖼️: Choose between JPG and PNG formats using checkboxes.
+- **File Path** 📂: Select the destination folder for saving the edited image.
+- **Save Button** 💾: Click to export the edited image with the specified parameters.
 
 ---
 
