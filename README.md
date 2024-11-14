@@ -15,9 +15,9 @@ Welcome to the *`Image Viewer and Editor`*! This application is designed to prov
 - [Components Overview](#components-overview)
 - [Detailed Functionality](#detailed-functionality)
 - [Screenshots](#screenshots)
-- [Known Issues](#Known-Issues-🐛)
+- [Known Issues](#Known-Issues)
 - [Contributing](#contributing)
-- [License](#license)
+- [License](#license-🐛)
 - [Contact](#contact)
 
 ---
@@ -170,7 +170,7 @@ Image-viewer-and-editor/
 
 ---
 
-## Known Issues 🐛
+## **Known Issues** 🐛
 
 Well... there *might* be a little bug somewhere in the app 🐞. It's just hanging out, living its best life. Can you spot it? 👀 
 
@@ -183,10 +183,10 @@ P.S. I know about it 😜, but I thought I'd let you have some fun looking for i
 ## Contributing
 Contributions are welcome! If you have suggestions for improvements or new features, please create an issue or submit a pull request. 💡
 
-## License 🐛
+## **License 🐛**
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details. 📜
 
-## Contact
+## **Contact**
 For any questions or inquiries, feel free to contact.
 - *Name*: Asif Ahmed *`(asRot0)`*
 - *LinkedIn*: [in/asifahm9090](https://www.linkedin.com/in/asifahm9090/)
