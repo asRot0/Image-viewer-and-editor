@@ -13,6 +13,7 @@ Welcome to the **Image Viewer and Editor**! This application is designed to prov
 - [Components Overview](#components-overview)
 - [Detailed Functionality](#detailed-functionality)
 - [Screenshots](#screenshots)
+- [Known Issues](#Known-Issues)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -147,6 +148,18 @@ Image-viewer-and-editor/
 #### Main Interface
 ![screenshots](screenshots/screenshot%20(1).png)
 [All screenshots](screenshots/README.md)
+
+---
+
+## Known Issues 🐛
+
+Well... there *might* be a little bug somewhere in the app 🐞. It's just hanging out, living its best life. Can you spot it? 👀 
+
+It's like a scavenger hunt, but instead of prizes, you get some sweet debugging skills! 😎🔧
+
+P.S. I know about it 😜, but I thought I'd let you have some fun looking for it. Go ahead, give it a try — I dare you! 💻✨
+
+---
 
 ## Contributing
 Contributions are welcome! If you have suggestions for improvements or new features, please create an issue or submit a pull request.
