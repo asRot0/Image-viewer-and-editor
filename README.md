@@ -2,7 +2,9 @@
 
 ![Project Logo](./assets/image.png) <!-- Optional: Add an image logo -->
 
-Welcome to the *`Image Viewer and Editor`!* This application is designed to provide users with a powerful yet user-friendly interface for viewing and editing images. Built using Python's `customtkinter`, it offers a variety of functionalities, including rotating images, adjusting colors, applying effects, and exporting in multiple formats.
+Welcome to the *`Image Viewer and Editor`*! This application is designed to provide users with a powerful yet user-friendly interface for viewing and editing images. Built using Python's `customtkinter`, it offers a variety of functionalities, including rotating images, adjusting colors, applying effects, and exporting in multiple formats.
+
+---
 
 ## Table of Contents
 
@@ -15,8 +17,10 @@ Welcome to the *`Image Viewer and Editor`!* This application is designed to prov
 - [Screenshots](#screenshots)
 - [Known Issues](#Known-Issues-🐛)
 - [Contributing](#contributing)
-- [License](#license-🐛)
+- [License](#license)
 - [Contact](#contact)
+
+---
 
 ## Features
 
@@ -26,6 +30,8 @@ Welcome to the *`Image Viewer and Editor`!* This application is designed to prov
 - **Real-Time Preview**: See changes as you make them with real-time updates. 👁️
 - **Customization**: Adjust sliders and switches to fine-tune your images. ⚙️
 - **About Section**: View information about the application, its version, and the developer.ℹ️
+
+---
 
 ## Installation
 
@@ -59,6 +65,9 @@ pip install Pillow==10.2.0
 pip install CTkToolTip==0.8
 pip install CTkMessagebox==2.5
 ```
+
+---
+
 ## Usage
 
 ### Launching the Application
@@ -74,6 +83,8 @@ Use the **File Path Panel** to select your image file 📂 from your file system
 
 ### Exporting the Edited Image
 - Use the `Export` section to specify a name and choose the format (JPG or PNG). Click the save button to export your edited image. 💾
+
+---
 
 ## Code Structure
 The project is organized as follows:
@@ -93,6 +104,8 @@ Image-viewer-and-editor/
 |-- run.py                  # Entry point for the application
 ```
 
+---
+
 ## Key Files and Their Responsibilities
 
 - **run.py**: The main entry point of the application, responsible for launching the application. 🚀
@@ -104,6 +117,8 @@ Image-viewer-and-editor/
 - **panels.py**: Contains various UI panels that house the editing controls and options for users. 🔧
 
 - **photo_editor.py**: This file contains the core logic for the image editing functionalities. 🖼️
+
+---
 
 ## Components Overview
 
@@ -118,6 +133,8 @@ Image-viewer-and-editor/
 - **Panels**: Each tab contains specific panels that group related controls, making it easy for users to navigate the functionalities. 🧩
 
 - **Settings**: Centralized settings for asset paths and default values used throughout the application. ⚙️
+
+---
 
 ## Detailed Functionality
 
@@ -142,6 +159,8 @@ Image-viewer-and-editor/
 - **File Format**: Choose between JPG and PNG formats using checkboxes.
 - **File Path**: Select the destination folder for saving the edited image.
 - **Save Button**: Click to export the edited image with the specified parameters.
+
+---
 
 ## Screenshots
 
@@ -171,3 +190,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For any questions or inquiries, feel free to contact.
 - *Name*: Asif Ahmed *`(asRot0)`*
 - *LinkedIn*: [in/asifahm9090](https://www.linkedin.com/in/asifahm9090/)
+
+---
