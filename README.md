@@ -13,7 +13,7 @@ Welcome to the **Image Viewer and Editor**! This application is designed to prov
 - [Components Overview](#components-overview)
 - [Detailed Functionality](#detailed-functionality)
 - [Screenshots](#screenshots)
-- [Known Issues](#Known-Issues)
+- [Known Issues](#Known-Issues-🐛)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
