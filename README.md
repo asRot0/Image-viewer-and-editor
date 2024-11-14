@@ -6,23 +6,7 @@ Welcome to the *`Image Viewer and Editor`*! This application is designed to prov
 
 ---
 
-## Table of Contents
-
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Code Structure](#code-structure)
-- [Components Overview](#components-overview)
-- [Detailed Functionality](#detailed-functionality)
-- [Screenshots](#screenshots)
-- [Known Issues](#Known-Issues)
-- [Contributing](#contributing)
-- [License](#license-🐛)
-- [Contact](#contact)
-
----
-
-## Features
+## 🚀 Features
 
 - **Intuitive User Interface**: Designed for ease of use, even for beginners. 🎮
 - **Image Manipulation**: Rotate, zoom, flip, and apply various color adjustments and effects. 🔄
@@ -33,7 +17,7 @@ Welcome to the *`Image Viewer and Editor`*! This application is designed to prov
 
 ---
 
-## Installation
+## 🛠️ Installation
 
 To set up the Image Viewer and Editor on your local machine, follow these steps:
 
@@ -68,7 +52,7 @@ pip install CTkMessagebox==2.5
 
 ---
 
-## Usage
+## 🖼️ Usage
 
 ### Launching the Application
 After running `run.py`, the main interface will appear.
@@ -86,7 +70,7 @@ Use the **File Path Panel** to select your image file 📂 from your file system
 
 ---
 
-## Code Structure
+## 🧩 Code Structure
 The project is organized as follows:
 
 ```lua
@@ -106,7 +90,7 @@ Image-viewer-and-editor/
 
 ---
 
-## Key Files and Their Responsibilities
+## 🖌️ Key Files and Their Responsibilities
 
 - **run.py**: The main entry point of the application, responsible for launching the application. 🚀
 
@@ -120,9 +104,9 @@ Image-viewer-and-editor/
 
 ---
 
-## Components Overview
+## 🖥️ Components Overview
 
-### Main Components
+### Main Components 🌍
 
 - **Menu**: The application is organized into tabs:
   - **Position**: Adjust image rotation and zoom. 🔄
@@ -136,7 +120,7 @@ Image-viewer-and-editor/
 
 ---
 
-## Detailed Functionality
+## 🔧 Detailed Functionality
 
 ### Position Frame
 - **Rotation**: Control the rotation of the image from 0 to 360 degrees using a slider.
@@ -162,7 +146,7 @@ Image-viewer-and-editor/
 
 ---
 
-## Screenshots
+## 📸 Screenshots
 
 #### Main Interface
 ![screenshots](screenshots/screenshot%20(1).png)
@@ -170,7 +154,7 @@ Image-viewer-and-editor/
 
 ---
 
-## **Known Issues** 🐛
+## 🐛 Known Issues
 
 Well... there *might* be a little bug somewhere in the app 🐞. It's just hanging out, living its best life. Can you spot it? 👀 
 
@@ -180,13 +164,13 @@ P.S. I know about it 😜, but I thought I'd let you have some fun looking for i
 
 ---
 
-## Contributing
+## 🤝 Contributing
 Contributions are welcome! If you have suggestions for improvements or new features, please create an issue or submit a pull request. 💡
 
-## **License 🐛**
+## 📜 License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details. 📜
 
-## **Contact**
+## 📞 Contact
 For any questions or inquiries, feel free to contact.
 - *Name*: Asif Ahmed *`(asRot0)`*
 - *LinkedIn*: [in/asifahm9090](https://www.linkedin.com/in/asifahm9090/)
