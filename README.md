@@ -2,7 +2,7 @@
 
 ![Project Logo](./assets/image.png) <!-- Optional: Add an image logo -->
 
-Welcome to the *`Image Viewer and Editor`*! This application is designed to provide users with a powerful yet user-friendly interface for viewing and editing images. Built using Python's `customtkinter`, it offers a variety of functionalities, including rotating images, adjusting colors, applying effects, and exporting in multiple formats.
+Welcome to the *`PhotoFly`*! This application is designed to provide users with a powerful yet user-friendly interface for viewing and editing images. Built using Python's `customtkinter`, it offers a variety of functionalities, including rotating images, adjusting colors, applying effects, and exporting in multiple formats.
 
 ---
 
