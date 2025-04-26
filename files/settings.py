@@ -9,6 +9,7 @@ assets_dir = BASE_DIR / 'assets'
 
 # Define the paths relative to the assets directory
 title_ico = assets_dir / 'image.ico'
+title_png = assets_dir / 'image.png'
 left_image = assets_dir / 'left.png'
 left_enter_image = assets_dir / 'left-arrow.png'
 right_image = assets_dir / 'right.png'
