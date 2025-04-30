@@ -5,6 +5,7 @@ from .menu import Menu
 from PIL import Image, ImageTk, ImageOps, ImageEnhance, ImageFilter
 from .frame import Frame
 from . import settings
+import os
 
 
 class App(ctk.CTk):
@@ -16,7 +17,10 @@ class App(ctk.CTk):
         # self.attributes('-fullscreen', True)
         self.geometry('1000x600')
         self.title(settings.about['title'])
-        self.iconbitmap(settings.title_ico)
+        if os.name == "nt":
+            self.iconbitmap(settings.title_ico)
+        else:
+            self.iconphoto(True, ImageTk.PhotoImage(Image.open(settings.title_png)))
         self.minsize(800, 500)
 
         self.image = None
