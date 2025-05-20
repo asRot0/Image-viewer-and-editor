@@ -4,9 +4,11 @@
 
 Welcome to the *`PhotoFly`*! This application is designed to provide users with a powerful yet user-friendly interface for viewing and editing images. Built using Python's `customtkinter`, it offers a variety of functionalities, including rotating images, adjusting colors, applying effects, and exporting in multiple formats.
 
----
+#### Main Interface
+![screenshots](screenshots/screenshot%20(1).png)
+[All screenshots](screenshots/README.md)
 
-## 🚀 Features
+### 🚀 Features
 
 - **Intuitive User Interface**: Designed for ease of use, even for beginners. 🎮
 - **Image Manipulation**: Rotate, zoom, flip, and apply various color adjustments and effects. 🔄
@@ -15,9 +17,7 @@ Welcome to the *`PhotoFly`*! This application is designed to provide users with 
 - **Customization**: Adjust sliders and switches to fine-tune your images. ⚙️
 - **About Section**: View information about the application, its version, and the developer.ℹ️
 
----
-
-## 🛠️ Installation
+### 🛠️ Installation
 
 To set up the Image Viewer and Editor on your local machine, follow these steps:
 
@@ -33,7 +33,7 @@ To set up the Image Viewer and Editor on your local machine, follow these steps:
 4. **Run the Application: Start the application using the command**
     ```bash
    python run.py
-#
+
 To run this project, you need to have the following dependencies installed:
 
 - customtkinter==5.2.2
@@ -50,10 +50,6 @@ pip install CTkToolTip==0.8
 pip install CTkMessagebox==2.5
 ```
 
----
-
-## 🖼️ Usage
-
 ### Launching the Application
 After running `run.py`, the main interface will appear.
 
@@ -68,9 +64,7 @@ Use the **File Path Panel** to select your image file 📂 from your file system
 ### Exporting the Edited Image
 - Use the `Export` section to specify a name and choose the format (JPG or PNG). Click the save button to export your edited image. 💾
 
----
-
-## 🧩 Code Structure
+### 🧩 Code Structure
 The project is organized as follows:
 
 ```lua
@@ -88,9 +82,7 @@ Image-viewer-and-editor/
 |-- run.py                  # Entry point for the application
 ```
 
----
-
-## 🖌️ Key Files and Their Responsibilities
+### 🖌️ Key Files and Their Responsibilities
 
 - **run.py**: The main entry point of the application, responsible for launching the application. 🚀
 
@@ -101,10 +93,6 @@ Image-viewer-and-editor/
 - **panels.py**: Contains various UI panels that house the editing controls and options for users. 🔧
 
 - **photo_editor.py**: This file contains the core logic for the image editing functionalities. 🖼️
-
----
-
-## 🖥️ Components Overview
 
 ### Main Components 🌍
 
@@ -117,10 +105,6 @@ Image-viewer-and-editor/
 - **Panels**: Each tab contains specific panels that group related controls, making it easy for users to navigate the functionalities. 🧩
 
 - **Settings**: Centralized settings for asset paths and default values used throughout the application. ⚙️
-
----
-
-## 🔧 Detailed Functionality
 
 ### Position Frame
 - **Rotation** 🔄: Control the rotation of the image from 0 to 360 degrees using a slider.
@@ -144,17 +128,7 @@ Image-viewer-and-editor/
 - **File Path** 📂: Select the destination folder for saving the edited image.
 - **Save Button** 💾: Click to export the edited image with the specified parameters.
 
----
-
-## 📸 Screenshots
-
-#### Main Interface
-![screenshots](screenshots/screenshot%20(1).png)
-[All screenshots](screenshots/README.md)
-
----
-
-## 🐛 Known Issues
+### 🐛 Known Issues
 
 Well... there *might* be a little bug somewhere in the app 🐞. It's just hanging out, living its best life. Can you spot it? 👀 
 
@@ -162,17 +136,13 @@ It's like a scavenger hunt, but instead of prizes, you get some sweet debugging 
 
 P.S. I know about it 😜, but I thought I'd let you have some fun looking for it. Go ahead, give it a try — I dare you! 💻✨
 
----
-
-## 🤝 Contributing
+### 🤝 Contributing
 Contributions are welcome! If you have suggestions for improvements or new features, please create an issue or submit a pull request. 💡
 
-## 📜 License
+### 📜 License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details. 📜
 
-## 📞 Contact
+### 📞 Contact
 For any questions or inquiries, feel free to contact.
 - *Name*: Asif Ahmed *`(asRot0)`*
 - *LinkedIn*: [in/asifahm9090](https://www.linkedin.com/in/asifahm9090/)
-
----
